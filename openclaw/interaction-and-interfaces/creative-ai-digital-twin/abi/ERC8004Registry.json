@@ -1,0 +1,30 @@
+[
+  {
+    "inputs": [
+      { "internalType": "address", "name": "operator", "type": "address" },
+      { "internalType": "uint256", "name": "coherenceScore", "type": "uint256" },
+      { "internalType": "uint256", "name": "totalRounds", "type": "uint256" },
+      { "internalType": "string", "name": "metadataUri", "type": "string" }
+    ],
+    "name": "registerAlignment",
+    "outputs": [
+      { "internalType": "uint256", "name": "registrationId", "type": "uint256" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "operator", "type": "address" }
+    ],
+    "name": "getAlignment",
+    "outputs": [
+      { "internalType": "uint256", "name": "coherenceScore", "type": "uint256" },
+      { "internalType": "uint256", "name": "totalRounds", "type": "uint256" },
+      { "internalType": "string", "name": "metadataUri", "type": "string" },
+      { "internalType": "uint256", "name": "timestamp", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]

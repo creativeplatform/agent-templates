@@ -1,0 +1,4 @@
+node_modules/
+avatars/*.glb
+.env
+package-lock.json

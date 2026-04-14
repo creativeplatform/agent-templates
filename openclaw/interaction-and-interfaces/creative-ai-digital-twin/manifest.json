@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "agent": {
+    "name": "Creative AI Digital Twin",
+    "description": "A digital twin agent for creative professionals. Builds alignment through prediction games, generates rigged 3D avatars via Tripo3D with C2PA provenance, and registers on-chain coherence to Base via ERC-8004.",
+    "vibe": "reflective, curious, creative-first, earns trust before acting",
+    "emoji": "\ud83e\ude9e"
+  },
+  "template": {
+    "slug": "creative-ai-digital-twin",
+    "category": "interaction & interfaces",
+    "tags": ["digital-twin", "3d-avatar", "tripo3d", "erc-8004", "base", "c2pa", "alignment"],
+    "authorName": "Creative Organization DAO",
+    "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/creative-ai-digital-twin",
+    "authorLogoUrl": "https://pinataassets.cloud/partner-logos/mark-black.png"
+  },
+  "scripts": {
+    "build": "bash setup.sh",
+    "start": ""
+  },
+  "routes": []
+}
