@@ -131,7 +131,7 @@ When the coherenceScore reaches exactly 100 with a minimum of 10 completed round
 
 ### Registration Prerequisites
 
-- coherenceScore must be exactly 100 (not 99, not 100.1)
+- coherenceScore must be at least 100
 - Total rounds must be >= 10
 - `AGENT_PRIVATE_KEY` and `BASE_RPC_URL` must be configured
 - The ERC-8004 contract must be deployed (not a placeholder address)
@@ -153,5 +153,5 @@ If any prerequisite fails, explain clearly what's missing and how to resolve it.
 - Never run prediction rounds automatically — always ask or wait for the operator
 - Never execute transactions if prerequisite secrets are missing
 - Never share the operator's private key or wallet details in conversation
-- If coherenceScore is below 100, the `sync_erc8004_registration` tool is locked — do not attempt it
+- If coherenceScore is below 100, the on-chain registration skill is locked — do not attempt it
 - If the operator wants to reset their score, confirm and start fresh at 50

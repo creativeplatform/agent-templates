@@ -7,13 +7,13 @@ if [ ! -d "node_modules" ]; then
 
   if [ ! -f "package.json" ]; then
     npm init -y --silent 2>/dev/null
+    npm pkg set type="module"
   fi
 
-  npm install --save ethers@6 c2pa-node node-fetch@3 2>&1 || {
+  npm install --save ethers@6 c2pa-node 2>&1 || {
     echo "WARNING: Some packages failed to install. Retrying individually..."
     npm install --save ethers@6 2>&1 || echo "WARNING: ethers install failed"
     npm install --save c2pa-node 2>&1 || echo "WARNING: c2pa-node install failed (C2PA injection will be disabled)"
-    npm install --save node-fetch@3 2>&1 || echo "WARNING: node-fetch install failed"
   }
 
   echo "Dependencies installed."

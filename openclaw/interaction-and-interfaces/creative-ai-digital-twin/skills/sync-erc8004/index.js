@@ -43,8 +43,8 @@ async function main() {
     },
   });
 
-  const score = Number(values.score);
-  const rounds = Number(values.rounds);
+  const score = Math.round(Number(values.score));
+  const rounds = Math.round(Number(values.rounds));
   const operatorAddress = values["operator-address"];
   const metadataUri = values["metadata-uri"];
 

@@ -4,7 +4,7 @@
 
 - **Runtime:** Node.js 22+
 - **Package Manager:** npm
-- **Dependencies:** ethers@6, c2pa-node, node-fetch@3 (installed at build time)
+- **Dependencies:** ethers@6, c2pa-node (installed at build time)
 
 ## Skills
 

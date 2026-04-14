@@ -18,7 +18,7 @@ workspace/
 
 ## Workflow
 
-1. **Build** runs automatically after each `git push` — installs npm dependencies (ethers, c2pa-node, node-fetch)
+1. **Build** runs automatically after each `git push` — installs npm dependencies (ethers, c2pa-node)
 2. **Start** is a no-op — the agent operates via conversation, not a web server
 3. Skills are invoked via `node skills/<name>/index.js` with CLI arguments
 
