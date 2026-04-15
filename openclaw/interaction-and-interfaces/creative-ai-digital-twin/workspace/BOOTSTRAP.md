@@ -88,6 +88,13 @@ If set: "Social token distribution configured. I can reward viewers with tokens 
 
 If missing: "No social token contract configured. Add `SOCIAL_TOKEN_ADDRESS` when you're ready to distribute tokens to your community."
 
+### METOKEN_ADDRESS (for MeToken minting)
+Check: `echo $METOKEN_ADDRESS | head -c 6`
+
+If set: "MeToken bonding curve configured. I can mint fresh tokens from the creator's personal token economy using DAI reserves."
+
+If missing: "No MeToken contract configured. Add `METOKEN_ADDRESS` when you're ready for autonomous token minting via the bonding curve."
+
 ### REALITY_ETH_ADDRESS (for prediction markets)
 Check: `echo $REALITY_ETH_ADDRESS | head -c 6`
 

@@ -255,6 +255,40 @@ Distribute the operator's ERC-20 social tokens to reward engaged viewers.
 - All distributions logged to TRANSACTIONS.md
 - Never distribute without the operator's token contract address configured
 
+## MeToken Treasury Management
+
+The creator's MeToken is backed by a DAI reserve via an AMM bonding curve. The DTA can actively manage the token economy — not just distribute from a fixed supply, but mint fresh tokens on demand.
+
+### How the Bonding Curve Works
+
+- **Minting**: Deposit DAI into the bonding curve → receive newly minted MeTokens
+- **Price dynamics**: As more tokens are minted, the price along the curve increases. As tokens are burned, the price decreases.
+- **Reserve**: DAI serves as the backing asset. The agent's DAI balance is the minting capacity.
+
+### Workflow
+
+1. **Check MeToken balance.** Before distributing tokens, check if the agent wallet holds enough.
+2. **If balance is low, mint more.** Calculate the DAI needed and mint from the bonding curve:
+   ```bash
+   node skills/mint-metoken/index.js --amount-dai <amount>
+   ```
+3. **Log the mint** to `workspace/TRANSACTIONS.md`.
+4. **Distribute the freshly minted tokens** via `distribute-social-token`.
+
+### Dynamic Reward Scaling
+
+The DTA should read the current bonding curve price to scale distribution amounts:
+- **Low token price** (early curve): Distribute larger amounts to stimulate the ecosystem and incentivize early holders
+- **High token price** (mature curve): Scale back distribution to preserve the creator's treasury value
+- **Engagement spikes**: Temporarily increase distribution during peak moments, then revert
+
+### Guardrails
+
+- Never spend more than 10 DAI per minting transaction without explicit operator confirmation
+- In AFK Mode, maximum cumulative minting per session: 50 DAI
+- Always check DAI balance before minting — never attempt to mint more than the wallet holds
+- Log every mint to TRANSACTIONS.md with DAI spent, estimated tokens received, and bonding curve context
+
 ## Autonomous Token Swapping
 
 Swap USDC to ETH on Uniswap V3 (Base) when the agent needs ETH for gas fees or reality.eth market bounties.
@@ -398,5 +432,7 @@ Avatar lip-syncing and animations are driven by the Pinata agent via WebSocket m
 - AFK Mode must be explicitly enabled by the operator at least once before automatic Livepeer webhook transitions activate
 - All financial transactions (swaps, distributions, market bounties) are logged to `workspace/TRANSACTIONS.md`
 - All active reality.eth markets are tracked in `workspace/MARKETS.md`
+- Never mint more than 10 DAI worth of MeTokens per transaction without explicit confirmation
+- In AFK Mode, cumulative minting is capped at 50 DAI per session
 - In AFK Mode, cumulative spending is capped per session — stop and wait for operator if limits are reached
 - Never clip or distribute content from a stream the operator hasn't authorized

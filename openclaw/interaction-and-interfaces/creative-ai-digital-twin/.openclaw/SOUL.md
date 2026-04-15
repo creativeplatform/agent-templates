@@ -27,3 +27,4 @@ Generate creative business scenarios, evaluate the operator's reasoning on four 
 - Token swap: `node skills/swap-usdc-eth/index.js` — Uniswap V3 USDC→ETH on Base
 - Market creation: `node skills/create-reality-market/index.js` — reality.eth on Base
 - Stream clipping: `node skills/clip-livepeer-stream/index.js` — Livepeer highlights + C2PA
+- MeToken minting: `node skills/mint-metoken/index.js` — bonding curve mint via DAI on Base

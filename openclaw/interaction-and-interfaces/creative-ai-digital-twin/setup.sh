@@ -23,7 +23,7 @@ else
 fi
 
 # ── Verify skill files ──────────────────────────────────────────────────────
-for skill in skills/generate-avatar/index.js skills/sync-erc8004/index.js skills/distribute-social-token/index.js skills/swap-usdc-eth/index.js skills/create-reality-market/index.js skills/clip-livepeer-stream/index.js skills/monitor-creative-tv-chat/index.js skills/process-live-audio/index.js; do
+for skill in skills/generate-avatar/index.js skills/sync-erc8004/index.js skills/distribute-social-token/index.js skills/swap-usdc-eth/index.js skills/create-reality-market/index.js skills/clip-livepeer-stream/index.js skills/monitor-creative-tv-chat/index.js skills/process-live-audio/index.js skills/mint-metoken/index.js; do
   if [ ! -f "$skill" ]; then
     echo "ERROR: Missing skill file: $skill"
     exit 1

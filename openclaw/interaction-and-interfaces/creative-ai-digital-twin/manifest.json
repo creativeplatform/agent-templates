@@ -9,7 +9,7 @@
   "template": {
     "slug": "creative-ai-digital-twin",
     "category": "interaction & interfaces",
-    "tags": ["digital-twin", "3d-avatar", "tripo3d", "erc-8004", "base", "c2pa", "alignment", "studio-assistant", "creative-tv", "social-token", "uniswap", "reality-eth", "live-stream", "livepeer"],
+    "tags": ["digital-twin", "3d-avatar", "tripo3d", "erc-8004", "base", "c2pa", "alignment", "studio-assistant", "creative-tv", "social-token", "metoken", "uniswap", "reality-eth", "live-stream", "livepeer"],
     "authorName": "Creative Organization DAO",
     "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/creative-ai-digital-twin",
     "authorLogoUrl": "https://pinataassets.cloud/partner-logos/mark-black.png"

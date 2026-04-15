@@ -18,6 +18,7 @@
 | USDC→ETH Swap | `skills/swap-usdc-eth/index.js` | Uniswap V3 swap on Base for ETH acquisition |
 | Reality.eth Market | `skills/create-reality-market/index.js` | Binary prediction market creation on Base |
 | Livepeer Clip | `skills/clip-livepeer-stream/index.js` | Clip live broadcast highlights + C2PA provenance |
+| Mint MeTokens | `skills/mint-metoken/index.js` | Mint personal tokens via bonding curve using DAI reserve |
 
 Skills are invoked via `node skills/<name>/index.js` with CLI arguments. They read secrets from environment variables and print JSON results to stdout.
 
@@ -35,6 +36,7 @@ Skills are invoked via `node skills/<name>/index.js` with CLI arguments. They re
 | `SOCIAL_TOKEN_ADDRESS` | ERC-20 social token contract on Base | Token distribution |
 | `REALITY_ETH_ADDRESS` | reality.eth contract address on Base | Market creation |
 | `LIVEPEER_API_KEY` | Livepeer Studio API key | Stream clipping, multistream routing |
+| `METOKEN_ADDRESS` | Creator's MeToken bonding curve contract on Base | MeToken minting |
 
 Secrets are configured in the Pinata dashboard and injected as environment variables at runtime.
 
@@ -49,6 +51,12 @@ Secrets are configured in the Pinata dashboard and injected as environment varia
 - **USDC:** `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
 - **WETH:** `0x4200000000000000000000000000000000000006`
 - **ABI:** `abi/UniswapV3SwapRouter.json`, `abi/ERC20.json`
+
+### MeTokens (Base)
+- **Contract:** Creator-specific, configured via `METOKEN_ADDRESS` env var
+- **Reserve Asset:** DAI (`0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb`)
+- **Mechanism:** AMM bonding curve — deposit DAI to mint, burn to redeem
+- **Max per mint:** 10 DAI without explicit operator confirmation
 
 ### Reality.eth (Base)
 - **Contract:** Address configured via `REALITY_ETH_ADDRESS` env var

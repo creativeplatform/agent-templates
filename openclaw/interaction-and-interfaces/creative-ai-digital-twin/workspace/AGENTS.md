@@ -52,6 +52,9 @@ node skills/create-reality-market/index.js --question "Will X happen?" --timeout
 
 # Livepeer stream clipping
 node skills/clip-livepeer-stream/index.js --stream-id abc123 --start-time=-30 --end-time now
+
+# MeToken minting via bonding curve
+node skills/mint-metoken/index.js --amount-dai 5
 ```
 
 Always check the `success` field in the JSON result before reporting success.

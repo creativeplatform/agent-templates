@@ -24,6 +24,9 @@ Connect to Creative TV's live chat via WebSocket. The agent monitors engagement,
 ### Social Token Distribution (rewards)
 Distribute your ERC-20 social tokens to engaged viewers during broadcasts. The agent identifies top participants, highlight moments, and trivia winners, then sends tokens directly from the agent wallet.
 
+### MeToken Bonding Curve Minting (treasury)
+Autonomously mint fresh MeTokens by depositing DAI into the creator's bonding curve contract. When the agent's token balance runs low during a high-engagement broadcast, it deposits DAI, mints new tokens, and distributes them instantly. Dynamic reward scaling adjusts distribution amounts based on the current bonding curve price.
+
 ### Autonomous Token Swapping (finance)
 Swap USDC to ETH on Uniswap V3 (Base) when the agent needs ETH for gas fees or market bounties. Executes the minimum swap needed with conservative slippage.
 
@@ -71,6 +74,9 @@ Float the 3D avatar as a transparent overlay during live broadcasts. Works with 
 **Distribute tokens**
 > "Send 50 tokens to the top 3 chatters from the last hour."
 
+**Mint MeTokens**
+> "We're running low on tokens for the giveaway. Mint 5 DAI worth from the bonding curve."
+
 **Create a prediction market**
 > "Chat is debating whether I'll finish this track tonight. Create a market for it."
 
@@ -109,5 +115,6 @@ Configure these secrets in your Pinata dashboard for each feature:
 | `SOCIAL_TOKEN_ADDRESS` | ERC-20 token contract on Base | Token distribution |
 | `REALITY_ETH_ADDRESS` | reality.eth contract on Base | Prediction markets |
 | `LIVEPEER_API_KEY` | Livepeer Studio API key | Stream clipping, multistream |
+| `METOKEN_ADDRESS` | Creator's MeToken bonding curve contract | MeToken minting |
 
 The prediction game works with zero secrets configured — you can start building alignment immediately.
