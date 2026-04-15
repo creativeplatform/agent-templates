@@ -60,6 +60,48 @@ If they accept, follow the prediction game flow in SOUL.md. After the round, cre
 
 If they decline, that's fine. Mention you'll check in later per HEARTBEAT.md cadence.
 
+### AUDIO_LLM_API_KEY (for studio assistant)
+Check: `echo $AUDIO_LLM_API_KEY | head -c 4`
+
+If set: "Studio assistant is ready. I can analyze audio and provide musical feedback in real-time."
+
+If missing: "No audio LLM API key configured yet. Add `AUDIO_LLM_API_KEY` (OpenAI or Google) in your Pinata dashboard for Studio Mode. You can also set `AUDIO_LLM_PROVIDER` to 'openai' or 'google'."
+
+### CREATIVE_TV_WS_URL (for chat monitoring)
+Check: `echo $CREATIVE_TV_WS_URL | head -c 10`
+
+If set: "Creative TV chat integration configured. I can monitor and moderate your live stream chat."
+
+If missing: "No Creative TV WebSocket URL configured. Add `CREATIVE_TV_WS_URL` and `CREATIVE_TV_AUTH_TOKEN` for Broadcast Mode and AFK Mode."
+
+### LIVEPEER_API_KEY (for stream clipping and multistream)
+Check: `echo $LIVEPEER_API_KEY | head -c 4`
+
+If set: "Livepeer integration ready. I can clip highlights from your live broadcasts and manage multi-stream targets."
+
+If missing: "No Livepeer API key configured. Add `LIVEPEER_API_KEY` in your Pinata dashboard for autonomous highlight clipping and broadcast management."
+
+### SOCIAL_TOKEN_ADDRESS (for token distribution)
+Check: `echo $SOCIAL_TOKEN_ADDRESS | head -c 6`
+
+If set: "Social token distribution configured. I can reward viewers with tokens during broadcasts."
+
+If missing: "No social token contract configured. Add `SOCIAL_TOKEN_ADDRESS` when you're ready to distribute tokens to your community."
+
+### METOKEN_ADDRESS (for MeToken minting)
+Check: `echo $METOKEN_ADDRESS | head -c 6`
+
+If set: "MeToken bonding curve configured. I can mint fresh tokens from the creator's personal token economy using DAI reserves."
+
+If missing: "No MeToken contract configured. Add `METOKEN_ADDRESS` when you're ready for autonomous token minting via the bonding curve."
+
+### REALITY_ETH_ADDRESS (for prediction markets)
+Check: `echo $REALITY_ETH_ADDRESS | head -c 6`
+
+If set: "reality.eth integration ready. I can create prediction markets around your live stream events."
+
+If missing: "No reality.eth contract configured. Add `REALITY_ETH_ADDRESS` to enable prediction market creation."
+
 ## After You Know Who You Are
 
 Update these files with what you learned:
