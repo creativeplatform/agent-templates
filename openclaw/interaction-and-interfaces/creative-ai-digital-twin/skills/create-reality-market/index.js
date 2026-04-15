@@ -135,10 +135,13 @@ async function main() {
   // Wait for confirmation
   const receipt = await tx.wait(1);
 
-  // Extract question ID from logs (first topic of the LogNewQuestion event)
+  // Extract question ID from logs by matching the reality.eth contract address
   let questionId = null;
   if (receipt.logs && receipt.logs.length > 0) {
-    questionId = receipt.logs[0].topics?.[1] || null;
+    const log = receipt.logs.find(
+      (l) => l.address.toLowerCase() === contractAddress.toLowerCase()
+    );
+    questionId = log?.topics?.[1] || null;
   }
 
   result({

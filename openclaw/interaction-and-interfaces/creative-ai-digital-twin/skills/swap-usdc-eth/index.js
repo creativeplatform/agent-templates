@@ -26,8 +26,37 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const USDC_ADDRESS = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 const WETH_ADDRESS = "0x4200000000000000000000000000000000000006";
 const SWAP_ROUTER_ADDRESS = "0x2626664c2603336E57B271c5C0b26F421741e481";
+const QUOTER_ADDRESS = "0x3d4e44Eb1374240CE5F1B871ab261CD16335B76a";
 const USDC_DECIMALS = 6;
 const FEE_TIER = 500; // 0.05% pool
+
+// Minimal Quoter V2 ABI for price quotes
+const QUOTER_ABI = [
+  {
+    inputs: [
+      {
+        components: [
+          { name: "tokenIn", type: "address" },
+          { name: "tokenOut", type: "address" },
+          { name: "amountIn", type: "uint256" },
+          { name: "fee", type: "uint24" },
+          { name: "sqrtPriceLimitX96", type: "uint160" },
+        ],
+        name: "params",
+        type: "tuple",
+      },
+    ],
+    name: "quoteExactInputSingle",
+    outputs: [
+      { name: "amountOut", type: "uint256" },
+      { name: "sqrtPriceX96After", type: "uint160" },
+      { name: "initializedTicksCrossed", type: "uint32" },
+      { name: "gasEstimate", type: "uint256" },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+];
 
 function result(data) {
   process.stdout.write(JSON.stringify(data) + "\n");
@@ -105,11 +134,26 @@ async function main() {
     }
   }
 
-  // Calculate minimum output with slippage
-  // amountOutMinimum = 0 here because we rely on slippage protection via the deadline
-  // In production, you'd query a price oracle first. For safety we set a floor.
-  const slippageMultiplier = BigInt(Math.floor((100 - slippagePct) * 100));
-  const amountOutMinimum = 0n; // Rely on pool price; agent confirms swap amount before execution
+  // Get a price quote from the Uniswap V3 Quoter to calculate slippage-protected minimum output
+  const quoter = new ethers.Contract(QUOTER_ADDRESS, QUOTER_ABI, provider);
+
+  let expectedAmountOut;
+  try {
+    const quoteResult = await quoter.quoteExactInputSingle.staticCall({
+      tokenIn: USDC_ADDRESS,
+      tokenOut: WETH_ADDRESS,
+      amountIn,
+      fee: FEE_TIER,
+      sqrtPriceLimitX96: 0n,
+    });
+    expectedAmountOut = quoteResult.amountOut;
+  } catch (err) {
+    fatal(`Failed to get price quote: ${err.reason || err.message}`);
+  }
+
+  // Apply slippage tolerance to the quoted output
+  const slippageBps = BigInt(Math.floor(slippagePct * 100)); // e.g. 0.5% → 50 bps
+  const amountOutMinimum = expectedAmountOut - (expectedAmountOut * slippageBps / 10000n);
 
   // Build swap params
   const swapRouter = new ethers.Contract(SWAP_ROUTER_ADDRESS, swapRouterAbi, wallet);
@@ -134,9 +178,6 @@ async function main() {
 
   // Wait for confirmation
   const receipt = await tx.wait(1);
-
-  // Parse swap result from logs
-  const ethBalanceAfter = await provider.getBalance(wallet.address);
 
   result({
     success: true,
