@@ -4,7 +4,7 @@
 
 - **Runtime:** Node.js 22+
 - **Package Manager:** npm
-- **Dependencies:** ethers@6, c2pa-node (installed at build time)
+- **Dependencies:** ethers@6, c2pa-node, ws (installed at build time)
 
 ## Skills
 
@@ -12,6 +12,12 @@
 |-------|------|---------|
 | Avatar Generation | `skills/generate-avatar/index.js` | Tripo3D text-to-3D + auto-rigging + C2PA injection |
 | ERC-8004 Sync | `skills/sync-erc8004/index.js` | On-chain alignment registration on Base |
+| Live Audio Processing | `skills/process-live-audio/index.js` | Audio analysis via LLM for studio collaboration |
+| Creative TV Chat | `skills/monitor-creative-tv-chat/index.js` | WebSocket chat monitoring, moderation, engagement metrics |
+| Social Token Distribution | `skills/distribute-social-token/index.js` | ERC-20 token transfers to viewer wallets on Base |
+| USDC→ETH Swap | `skills/swap-usdc-eth/index.js` | Uniswap V3 swap on Base for ETH acquisition |
+| Reality.eth Market | `skills/create-reality-market/index.js` | Binary prediction market creation on Base |
+| Livepeer Clip | `skills/clip-livepeer-stream/index.js` | Clip live broadcast highlights + C2PA provenance |
 
 Skills are invoked via `node skills/<name>/index.js` with CLI arguments. They read secrets from environment variables and print JSON results to stdout.
 
@@ -20,16 +26,34 @@ Skills are invoked via `node skills/<name>/index.js` with CLI arguments. They re
 | Secret | Purpose | Required For |
 |--------|---------|-------------|
 | `TRIPO_API_KEY` | Tripo3D API authentication | Avatar generation |
-| `AGENT_PRIVATE_KEY` | EVM wallet for Base transactions | ERC-8004 registration |
-| `BASE_RPC_URL` | Base network RPC endpoint | ERC-8004 registration |
+| `AGENT_PRIVATE_KEY` | EVM wallet for Base transactions | ERC-8004, token distribution, swaps, markets |
+| `BASE_RPC_URL` | Base network RPC endpoint | All on-chain skills |
+| `AUDIO_LLM_API_KEY` | Audio-capable LLM API key (OpenAI or Google) | Studio assistant |
+| `AUDIO_LLM_PROVIDER` | LLM provider: `openai` or `google` (default: openai) | Studio assistant |
+| `CREATIVE_TV_WS_URL` | Creative TV WebSocket endpoint | Chat monitoring |
+| `CREATIVE_TV_AUTH_TOKEN` | Creative TV authentication token | Chat monitoring |
+| `SOCIAL_TOKEN_ADDRESS` | ERC-20 social token contract on Base | Token distribution |
+| `REALITY_ETH_ADDRESS` | reality.eth contract address on Base | Market creation |
+| `LIVEPEER_API_KEY` | Livepeer Studio API key | Stream clipping, multistream routing |
 
 Secrets are configured in the Pinata dashboard and injected as environment variables at runtime.
 
-## Contract
+## Contracts
 
 - **ERC-8004 Registry:** Address TBD (placeholder in skill — update when deployed)
 - **Network:** Base (Chain ID 8453)
 - **ABI:** `abi/ERC8004Registry.json`
+
+### Uniswap V3 (Base)
+- **SwapRouter02:** `0x2626664c2603336E57B271c5C0b26F421741e481`
+- **USDC:** `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+- **WETH:** `0x4200000000000000000000000000000000000006`
+- **ABI:** `abi/UniswapV3SwapRouter.json`, `abi/ERC20.json`
+
+### Reality.eth (Base)
+- **Contract:** Address configured via `REALITY_ETH_ADDRESS` env var
+- **ABI:** `abi/RealityETH.json`
+- **Binary Template ID:** 2 (yes/no questions)
 
 ## Notes
 
@@ -37,4 +61,7 @@ Add environment-specific details here as you discover them:
 - Agent wallet address and ETH balance on Base
 - Tripo3D API rate limits or quota
 - C2PA certificate details
+- Social token contract address and decimals
+- Livepeer stream IDs for active broadcasts
+- Creative TV WebSocket connection details
 - Any deployment quirks

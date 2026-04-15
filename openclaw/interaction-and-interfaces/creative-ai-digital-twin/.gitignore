@@ -1,4 +1,5 @@
 node_modules/
 avatars/*.glb
+clips/*.mp4
 .env
 package-lock.json

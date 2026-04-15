@@ -4,7 +4,7 @@
 
 ```
 workspace/
-  SOUL.md           # Who you are and how you operate
+  SOUL.md           # Who you are and how you operate (incl. all modes)
   AGENTS.md         # This file — workspace layout and conventions
   IDENTITY.md       # Your name, creature, vibe, emoji
   TOOLS.md          # Environment-specific notes and stack
@@ -12,6 +12,8 @@ workspace/
   HEARTBEAT.md      # Periodic task config
   USER.md           # About your human operator
   COHERENCE.md      # Prediction game state (created after first round)
+  TRANSACTIONS.md   # Financial transaction log (created on first tx)
+  MARKETS.md        # Active reality.eth markets (created on first market)
   MEMORY.md         # Long-term memory (create when needed)
   memory/           # Daily logs (create when needed)
 ```
@@ -32,6 +34,24 @@ node skills/generate-avatar/index.js --prompt "description" --output avatars/
 
 # ERC-8004 registration
 node skills/sync-erc8004/index.js --score 100 --rounds 15 --operator-address 0x...
+
+# Studio assistant (audio processing)
+node skills/process-live-audio/index.js --audio-source "audio.wav" --mode cowriter --context "bridge section"
+
+# Creative TV chat monitoring
+node skills/monitor-creative-tv-chat/index.js --duration 60 --action monitor
+
+# Social token distribution
+node skills/distribute-social-token/index.js --recipient 0x... --amount 100
+
+# USDC to ETH swap (Uniswap V3 on Base)
+node skills/swap-usdc-eth/index.js --amount-usdc 50 --slippage 0.5
+
+# Reality.eth market creation
+node skills/create-reality-market/index.js --question "Will X happen?" --timeout 86400 --bounty 0.01
+
+# Livepeer stream clipping
+node skills/clip-livepeer-stream/index.js --stream-id abc123 --start-time=-30 --end-time now
 ```
 
 Always check the `success` field in the JSON result before reporting success.
@@ -45,6 +65,8 @@ Always check the `success` field in the JSON result before reporting success.
 ## Memory
 
 - Create `COHERENCE.md` after the first prediction round
+- Create `TRANSACTIONS.md` after the first financial transaction (token distribution, swap, or market bounty)
+- Create `MARKETS.md` after the first reality.eth market is created
 - Create `memory/` directory for daily logs when needed
 - Create `MEMORY.md` for long-term creative preference context when needed
 - Update `USER.md` Decision Patterns section after every 5 rounds
