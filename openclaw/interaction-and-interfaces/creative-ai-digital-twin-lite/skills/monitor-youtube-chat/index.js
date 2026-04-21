@@ -177,6 +177,7 @@ async function main() {
   const deadline = startTime + durationMs;
   let pageToken;
   let endedEarly = false;
+  let quotaExceeded = false;
 
   while (Date.now() < deadline) {
     let page;
@@ -188,7 +189,8 @@ async function main() {
         break;
       }
       if (err.status === 403 && err.reason === "quotaExceeded") {
-        fatal("YouTube API quota exceeded during polling. Partial data was not returned.");
+        quotaExceeded = true;
+        break;
       }
       if (err.status === 404) {
         fatal(`Live chat ${liveChatId} not found (stream may have ended or been deleted).`);
@@ -223,6 +225,8 @@ async function main() {
     duration: actualDuration,
     messageCount: messages.length,
     endedEarly,
+    quotaExceeded,
+    ...(quotaExceeded ? { warning: "YouTube API quota exceeded mid-poll; returning partial data collected so far." } : {}),
     metrics,
   };
 
