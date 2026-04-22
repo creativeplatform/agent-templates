@@ -28,12 +28,12 @@
     {
       "name": "PINATA_JWT",
       "description": "Pinata API JWT token. Used by attached Pinata skills. Get one at app.pinata.cloud → Developers → API Keys → New Key (Admin permissions).",
-      "required": false
+      "required": true
     },
     {
       "name": "PINATA_GATEWAY_URL",
       "description": "Pinata dedicated gateway domain (e.g. your-gateway.mypinata.cloud). Find it at app.pinata.cloud → Gateways.",
-      "required": false
+      "required": true
     },
     {
       "name": "AUDIO_LLM_API_KEY",
