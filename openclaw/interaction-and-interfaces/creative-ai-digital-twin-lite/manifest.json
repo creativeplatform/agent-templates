@@ -14,6 +14,58 @@
     "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/creative-ai-digital-twin-lite",
     "authorLogoUrl": "https://teal-defeated-krill-982.mypinata.cloud/ipfs/bafybeicroemiw7wwvdc6qxkyfx52nfhbhxcbqjgxlr2fsnrn75pgoz2ocm"
   },
+  "secrets": [
+    {
+      "name": "TRIPO_API_KEY",
+      "description": "Tripo3D API key for text-to-3D avatar generation. Get one at https://platform.tripo3d.ai. Without it, the generate-avatar skill is disabled.",
+      "required": false
+    },
+    {
+      "name": "AGENT_PRIVATE_KEY",
+      "description": "EVM private key for the agent's dedicated wallet. Required (paired with BASE_RPC_URL) for ERC-8004 on-chain alignment registration. Use a fresh wallet, never your personal one.",
+      "required": false
+    },
+    {
+      "name": "BASE_RPC_URL",
+      "description": "RPC endpoint for Base network (Chain ID 8453). Required (paired with AGENT_PRIVATE_KEY) for on-chain registration. Example: https://mainnet.base.org or an Alchemy/Infura URL.",
+      "required": false
+    },
+    {
+      "name": "AUDIO_LLM_API_KEY",
+      "description": "API key for the audio-capable LLM used by the studio assistant (process-live-audio skill). Works with OpenAI GPT-4o or Google Gemini depending on AUDIO_LLM_PROVIDER.",
+      "required": false
+    },
+    {
+      "name": "AUDIO_LLM_PROVIDER",
+      "description": "Provider for audio analysis. Set to 'openai' (default) or 'google'. Paired with AUDIO_LLM_API_KEY.",
+      "required": false
+    },
+    {
+      "name": "YOUTUBE_API_KEY",
+      "description": "YouTube Data API v3 key. Required for YouTube live chat monitoring via the monitor-youtube-chat skill.",
+      "required": false
+    },
+    {
+      "name": "YOUTUBE_VIDEO_ID",
+      "description": "Optional default YouTube video id used for HEARTBEAT (autonomous) chat monitoring. Can be overridden per-invocation in chat.",
+      "required": false
+    },
+    {
+      "name": "TWITCH_CHANNEL",
+      "description": "Optional default Twitch channel name used for HEARTBEAT (autonomous) chat monitoring. Anonymous read-only monitoring requires no token.",
+      "required": false
+    },
+    {
+      "name": "TWITCH_CLIENT_ID",
+      "description": "Twitch application client id. Required (paired with TWITCH_OAUTH_USER_TOKEN) for the create-twitch-clip skill.",
+      "required": false
+    },
+    {
+      "name": "TWITCH_OAUTH_USER_TOKEN",
+      "description": "Twitch user OAuth token with the 'clips:edit' scope. Required (paired with TWITCH_CLIENT_ID) for clip creation — Twitch does not support anonymous clipping.",
+      "required": false
+    }
+  ],
   "scripts": {
     "build": "bash setup.sh",
     "start": ""
