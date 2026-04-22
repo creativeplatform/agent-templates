@@ -8,10 +8,11 @@
 
 ## Skills
 
+### Local Skills
+
 | Skill | Path | Purpose |
 |-------|------|---------|
 | Avatar Generation | `skills/generate-avatar/index.js` | Tripo3D text-to-3D + auto-rigging + C2PA injection |
-| ERC-8004 Sync | `skills/sync-erc8004/index.js` | On-chain alignment registration on Base |
 | Live Audio Processing | `skills/process-live-audio/index.js` | Audio analysis via LLM for studio collaboration |
 | Creative TV Chat | `skills/monitor-creative-tv-chat/index.js` | WebSocket chat monitoring, moderation, engagement metrics |
 | Social Token Distribution | `skills/distribute-social-token/index.js` | ERC-20 token transfers to viewer wallets on Base |
@@ -20,14 +21,27 @@
 | Livepeer Clip | `skills/clip-livepeer-stream/index.js` | Clip live broadcast highlights + C2PA provenance |
 | Mint MeTokens | `skills/mint-metoken/index.js` | Mint personal tokens via bonding curve using DAI reserve |
 
-Skills are invoked via `node skills/<name>/index.js` with CLI arguments. They read secrets from environment variables and print JSON results to stdout.
+Local skills are invoked via `node skills/<name>/index.js` with CLI arguments. They read secrets from environment variables and print JSON results to stdout.
+
+### Attached Pinata Skills (via manifest `skills` array)
+
+| Skill | Purpose |
+|-------|---------|
+| `@Pinata/ERC8004` | On-chain alignment registration on Base. Gate: only invoke when coherenceScore === 100 AND rounds >= 10. |
+| `@Pinata/API` | General Pinata API access. |
+| `@Pinata/MEMORY_SALIENCE` | Memory salience scoring and compaction. |
+| `@Pinata/PARASPACE` | Paraspace integration. |
+| `@pinata/platform` | Pinata platform utilities. |
+| `@pinata/sqlite-sync` | SQLite persistence and sync. |
+
+Attached skills are provided by Pinata and available as tools at runtime — no local file exists. Invoke by name.
 
 ## Secrets Reference
 
 | Secret | Purpose | Required For |
 |--------|---------|-------------|
 | `TRIPO_API_KEY` | Tripo3D API authentication | Avatar generation |
-| `AGENT_PRIVATE_KEY` | EVM wallet for Base transactions | ERC-8004, token distribution, swaps, markets |
+| `PRIVATE_KEY` | EVM wallet for Base transactions | ERC-8004, token distribution, swaps, markets |
 | `BASE_RPC_URL` | Base network RPC endpoint | All on-chain skills |
 | `AUDIO_LLM_API_KEY` | Audio-capable LLM API key (OpenAI or Google) | Studio assistant |
 | `AUDIO_LLM_PROVIDER` | LLM provider: `openai` or `google` (default: openai) | Studio assistant |
@@ -42,9 +56,8 @@ Secrets are configured in the Pinata dashboard and injected as environment varia
 
 ## Contracts
 
-- **ERC-8004 Registry:** Address TBD (placeholder in skill — update when deployed)
+- **ERC-8004 Registry:** Managed by the `@Pinata/ERC8004` attached skill. Contract address and ABI are handled inside the skill — no local config needed.
 - **Network:** Base (Chain ID 8453)
-- **ABI:** `abi/ERC8004Registry.json`
 
 ### Uniswap V3 (Base)
 - **SwapRouter02:** `0x2626664c2603336E57B271c5C0b26F421741e481`

@@ -10,9 +10,8 @@ if [ ! -d "node_modules" ]; then
     npm pkg set type="module"
   fi
 
-  npm install --save ethers@6 c2pa-node ws 2>&1 || {
+  npm install --save c2pa-node ws 2>&1 || {
     echo "WARNING: Some packages failed to install. Retrying individually..."
-    npm install --save ethers@6 2>&1 || echo "WARNING: ethers install failed"
     npm install --save c2pa-node 2>&1 || echo "WARNING: c2pa-node install failed (C2PA injection will be disabled)"
     npm install --save ws 2>&1 || echo "WARNING: ws install failed (Twitch IRC monitoring will be disabled)"
   }
@@ -25,7 +24,6 @@ fi
 # ── Verify skill files ──────────────────────────────────────────────────────
 for skill in \
   skills/generate-avatar/index.js \
-  skills/sync-erc8004/index.js \
   skills/process-live-audio/index.js \
   skills/monitor-youtube-chat/index.js \
   skills/monitor-twitch-chat/index.js \

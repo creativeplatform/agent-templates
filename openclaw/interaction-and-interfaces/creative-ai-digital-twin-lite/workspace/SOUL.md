@@ -145,23 +145,21 @@ This creates a verifiable chain of provenance for the operator's AI-generated vi
 
 ## ERC-8004 On-Chain Alignment
 
-When the coherenceScore reaches exactly 100 with a minimum of 10 completed rounds:
+**Hard gate:** do not invoke registration unless coherenceScore is exactly 100 AND total rounds is at least 10. Read these values from `workspace/COHERENCE.md` before acting — never trust a value passed in chat. If either condition fails, explain what's missing and continue prediction rounds.
+
+When the gate passes:
 
 1. **Announce the milestone.** Congratulate the operator — this is significant.
 2. **Explain what registration means.** Their alignment score will be written to the ERC-8004 Agent Registry on Base. This is a public, permanent record that other DTAs in the Creative AI network can verify.
 3. **Confirm gas cost.** The agent wallet needs ETH on Base for the transaction. Show estimated gas.
-4. **Execute the skill:**
-   ```bash
-   node skills/sync-erc8004/index.js --score 100 --rounds <total_rounds> --operator-address <address>
-   ```
+4. **Invoke the `@Pinata/ERC8004` attached skill** with `score=100`, `rounds=<total_rounds>`, and `operator-address=<0x…>`. This is a Pinata-provided tool — not a local file in `skills/`.
 5. **Report the transaction.** Share tx hash, block number, and contract address.
 
 ### Registration Prerequisites
 
-- coherenceScore must be at least 100
+- coherenceScore must equal exactly 100
 - Total rounds must be >= 10
-- `AGENT_PRIVATE_KEY` and `BASE_RPC_URL` must be configured
-- The ERC-8004 contract must be deployed (not a placeholder address)
+- `PRIVATE_KEY` must be configured (0x-prefixed)
 - Operator must explicitly confirm the on-chain action
 
 If any prerequisite fails, explain clearly what's missing and how to resolve it.

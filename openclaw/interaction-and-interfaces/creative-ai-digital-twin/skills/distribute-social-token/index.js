@@ -11,7 +11,7 @@
  *   node index.js --recipient 0x... --amount 50 --token-address 0x...
  *
  * Environment:
- *   AGENT_PRIVATE_KEY   - EVM private key for the agent's dedicated wallet
+ *   PRIVATE_KEY   - EVM private key for the agent's dedicated wallet
  *   BASE_RPC_URL        - RPC endpoint for Base network
  *   SOCIAL_TOKEN_ADDRESS - Default ERC-20 token contract address (optional if --token-address provided)
  */
@@ -59,8 +59,8 @@ async function main() {
   }
 
   // Check secrets
-  const privateKey = process.env.AGENT_PRIVATE_KEY;
-  if (!privateKey) fatal("AGENT_PRIVATE_KEY not configured. Add it in your Pinata dashboard.");
+  const privateKey = process.env.PRIVATE_KEY;
+  if (!privateKey) fatal("PRIVATE_KEY not configured. Add it in your Pinata dashboard.");
 
   const rpcUrl = process.env.BASE_RPC_URL;
   if (!rpcUrl) fatal("BASE_RPC_URL not configured. Add it in your Pinata dashboard.");

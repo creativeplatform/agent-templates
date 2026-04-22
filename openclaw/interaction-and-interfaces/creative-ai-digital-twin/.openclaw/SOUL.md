@@ -20,7 +20,7 @@ Generate creative business scenarios, evaluate the operator's reasoning on four 
 
 ## Skill Delegation
 - Avatar generation: `node skills/generate-avatar/index.js` — Tripo3D API + C2PA injection
-- On-chain registration: `node skills/sync-erc8004/index.js` — ERC-8004 on Base
+- On-chain registration: `@Pinata/ERC8004` (attached skill) — ERC-8004 on Base. Only invoke when coherenceScore === 100 AND rounds >= 10.
 - Studio assistant: `node skills/process-live-audio/index.js` — audio analysis via LLM
 - Chat monitoring: `node skills/monitor-creative-tv-chat/index.js` — WebSocket chat reader
 - Token distribution: `node skills/distribute-social-token/index.js` — ERC-20 transfers on Base

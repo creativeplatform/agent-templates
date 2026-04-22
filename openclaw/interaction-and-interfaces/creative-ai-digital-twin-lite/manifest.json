@@ -21,13 +21,18 @@
       "required": false
     },
     {
-      "name": "AGENT_PRIVATE_KEY",
-      "description": "EVM private key for the agent's dedicated wallet. Required (paired with BASE_RPC_URL) for ERC-8004 on-chain alignment registration. Use a fresh wallet, never your personal one.",
+      "name": "PRIVATE_KEY",
+      "description": "0x-prefixed Ethereum private key for the agent's dedicated wallet. Used by @Pinata/ERC8004 for on-chain alignment registration. Create a NEW wallet — never use your personal wallet — and fund it with only the minimum ETH needed for gas on Base.",
       "required": false
     },
     {
-      "name": "BASE_RPC_URL",
-      "description": "RPC endpoint for Base network (Chain ID 8453). Required (paired with AGENT_PRIVATE_KEY) for on-chain registration. Example: https://mainnet.base.org or an Alchemy/Infura URL.",
+      "name": "PINATA_JWT",
+      "description": "Pinata API JWT token. Used by attached Pinata skills. Get one at app.pinata.cloud → Developers → API Keys → New Key (Admin permissions).",
+      "required": false
+    },
+    {
+      "name": "PINATA_GATEWAY_URL",
+      "description": "Pinata dedicated gateway domain (e.g. your-gateway.mypinata.cloud). Find it at app.pinata.cloud → Gateways.",
       "required": false
     },
     {
@@ -64,6 +69,32 @@
       "name": "TWITCH_OAUTH_USER_TOKEN",
       "description": "Twitch user OAuth token with the 'clips:edit' scope. Required (paired with TWITCH_CLIENT_ID) for clip creation — Twitch does not support anonymous clipping.",
       "required": false
+    }
+  ],
+  "skills": [
+    {
+      "cid": "bafybeigum5juaj7faldszh7fpc6j2w23susjajvtzh6nh7vgi2eoiyvzf4",
+      "name": "@Pinata/ERC8004"
+    },
+    {
+      "cid": "bafybeieerrctaycitdctw57t4ov5welowxt3idxojpy6qnq23wlbyqgyou",
+      "name": "@Pinata/API"
+    },
+    {
+      "cid": "bafybeigfukjsrtuuuwbshp5nr5qme5ndvc7t7e54dixuzeobxyyaycwifu",
+      "name": "@Pinata/MEMORY_SALIENCE"
+    },
+    {
+      "cid": "bafybeiergfzuvxxlozrmtuh6vddst6pn7ffsjfl6khwaclyvlg6sokfjp4",
+      "name": "@Pinata/PARASPACE"
+    },
+    {
+      "cid": "bafybeiblmoh4eevvvenvhlxnteezliy2ltlo26bl7kavwzxvbm4d2ku7qy",
+      "name": "@pinata/platform"
+    },
+    {
+      "cid": "bafybeifav7f7oaaispwrim74jseeyc6hlwoz6wtnn4fhkepayfedg6qj64",
+      "name": "@pinata/sqlite-sync"
     }
   ],
   "scripts": {

@@ -32,8 +32,9 @@ Skills print JSON to stdout. Parse the result and report to the operator.
 # Avatar generation
 node skills/generate-avatar/index.js --prompt "description" --output avatars/
 
-# ERC-8004 registration
-node skills/sync-erc8004/index.js --score 100 --rounds 15 --operator-address 0x...
+# ERC-8004 registration — invoke the attached @Pinata/ERC8004 skill (not a local file).
+# Gate: coherenceScore must be exactly 100 AND rounds must be >= 10. Pass score, rounds,
+# and the operator's EVM address. Requires PRIVATE_KEY + BASE_RPC_URL secrets.
 
 # Studio assistant (audio processing)
 node skills/process-live-audio/index.js --audio-source "audio.wav" --mode cowriter --context "bridge section"

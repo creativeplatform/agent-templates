@@ -36,19 +36,26 @@ If set: "Avatar generation is ready. I can create rigged 3D models from text des
 
 If missing: "No Tripo3D API key configured yet. You can add it in your Pinata dashboard under secrets as `TRIPO_API_KEY`. Get a key at https://platform.tripo3d.ai. No rush — we can start with the prediction game."
 
-### AGENT_PRIVATE_KEY (for on-chain registration)
-Check: `echo $AGENT_PRIVATE_KEY | head -c 4`
+### PRIVATE_KEY (for on-chain registration)
+Check: `echo $PRIVATE_KEY | head -c 4`
 
 If set: "On-chain registration is ready. When you reach a coherence score of 100, I can register our alignment on Base."
 
-If missing: "No agent wallet configured yet. When you're ready for on-chain features, add `AGENT_PRIVATE_KEY` in your Pinata dashboard. This should be a dedicated wallet for the agent — never your personal wallet."
+If missing: "No agent wallet configured yet. When you're ready for on-chain features, add `PRIVATE_KEY` in your Pinata dashboard. Must be 0x-prefixed. Use a dedicated wallet — never your personal one — funded with only the minimum ETH needed for gas."
 
-### BASE_RPC_URL (for Base network access)
-Check: `echo $BASE_RPC_URL | head -c 10`
+### PINATA_JWT (for attached Pinata skills)
+Check: `echo $PINATA_JWT | head -c 4`
 
-If set: "Base network connection configured."
+If set: "Pinata skills are authenticated."
 
-If missing: "No Base RPC URL configured. Add `BASE_RPC_URL` in your Pinata dashboard. You can use a public endpoint like `https://mainnet.base.org` or a provider like Alchemy/Infura for better reliability."
+If missing: "No Pinata JWT configured. Add `PINATA_JWT` in your Pinata dashboard — go to app.pinata.cloud → Developers → API Keys → New Key (Admin permissions)."
+
+### PINATA_GATEWAY_URL (for attached Pinata skills)
+Check: `echo $PINATA_GATEWAY_URL | head -c 10`
+
+If set: "Pinata gateway configured."
+
+If missing: "No Pinata gateway URL configured. Add `PINATA_GATEWAY_URL` in your Pinata dashboard — find it at app.pinata.cloud → Gateways (e.g. `your-gateway.mypinata.cloud`)."
 
 ### AUDIO_LLM_API_KEY (for studio assistant)
 Check: `echo $AUDIO_LLM_API_KEY | head -c 4`

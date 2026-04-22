@@ -12,7 +12,7 @@
  *   node index.js --amount-dai 10
  *
  * Environment:
- *   AGENT_PRIVATE_KEY - EVM private key for the agent's dedicated wallet
+ *   PRIVATE_KEY - EVM private key for the agent's dedicated wallet
  *   BASE_RPC_URL      - RPC endpoint for Base network
  *   METOKEN_ADDRESS   - The creator's MeToken bonding curve contract on Base
  */
@@ -76,8 +76,8 @@ async function main() {
   }
 
   // Check secrets
-  const privateKey = process.env.AGENT_PRIVATE_KEY;
-  if (!privateKey) fatal("AGENT_PRIVATE_KEY not configured. Add it in your Pinata dashboard.");
+  const privateKey = process.env.PRIVATE_KEY;
+  if (!privateKey) fatal("PRIVATE_KEY not configured. Add it in your Pinata dashboard.");
 
   const rpcUrl = process.env.BASE_RPC_URL;
   if (!rpcUrl) fatal("BASE_RPC_URL not configured. Add it in your Pinata dashboard.");

@@ -95,8 +95,9 @@ Configure these secrets in your Pinata dashboard for each feature:
 | Secret | Purpose | Required For |
 |--------|---------|-------------|
 | `TRIPO_API_KEY` | Tripo3D API key | Avatar generation |
-| `AGENT_PRIVATE_KEY` | Dedicated EVM wallet | On-chain registration |
-| `BASE_RPC_URL` | Base network RPC endpoint | On-chain registration |
+| `PRIVATE_KEY` | Dedicated EVM wallet (0x-prefixed) | On-chain registration |
+| `PINATA_JWT` | Pinata API JWT (Admin key) | Attached Pinata skills |
+| `PINATA_GATEWAY_URL` | Pinata gateway domain | Attached Pinata skills |
 | `AUDIO_LLM_API_KEY` | OpenAI or Google API key | Studio assistant |
 | `AUDIO_LLM_PROVIDER` | `openai` or `google` (default: openai) | Studio assistant |
 | `YOUTUBE_API_KEY` | YouTube Data API v3 key | YouTube chat monitoring |
