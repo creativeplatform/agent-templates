@@ -95,6 +95,10 @@
     {
       "cid": "bafybeifav7f7oaaispwrim74jseeyc6hlwoz6wtnn4fhkepayfedg6qj64",
       "name": "@pinata/sqlite-sync"
+    },
+    {
+      "clawhub_slug": "self-improving-agent",
+      "name": "self-improving-agent"
     }
   ],
   "scripts": {
