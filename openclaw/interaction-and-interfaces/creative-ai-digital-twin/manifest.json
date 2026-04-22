@@ -12,7 +12,7 @@
     "tags": ["digital-twin", "3d-avatar", "erc-8004", "base", "c2pa", "alignment", "studio-assistant", "creative-tv", "livepeer", "live-stream"],
     "authorName": "Creative Organization DAO",
     "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/creative-ai-digital-twin",
-    "authorLogoUrl": "https://pinataassets.cloud/partner-logos/mark-black.png"
+    "authorLogoUrl": "https://teal-defeated-krill-982.mypinata.cloud/ipfs/bafybeihluexrhaq3ptowlbtl7x7fehj7rxnvlybvtpgerbv2m5swwh64ca"
   },
   "scripts": {
     "build": "bash setup.sh",
