@@ -14,6 +14,63 @@
     "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/creative-ai-digital-twin",
     "authorLogoUrl": "https://teal-defeated-krill-982.mypinata.cloud/ipfs/bafybeihluexrhaq3ptowlbtl7x7fehj7rxnvlybvtpgerbv2m5swwh64ca"
   },
+  "secrets": [
+    {
+      "name": "AGENT_PRIVATE_KEY",
+      "description": "EVM private key for the agent's dedicated wallet. Required (paired with BASE_RPC_URL) for any on-chain feature — ERC-8004 alignment registration, token distribution, MeToken minting, prediction markets, swaps. Use a fresh wallet, never your personal one.",
+      "required": false
+    },
+    {
+      "name": "BASE_RPC_URL",
+      "description": "RPC endpoint for Base network (Chain ID 8453). Required (paired with AGENT_PRIVATE_KEY) for on-chain features. Example: https://mainnet.base.org or an Alchemy/Infura URL.",
+      "required": false
+    },
+    {
+      "name": "TRIPO_API_KEY",
+      "description": "Tripo3D API key for text-to-3D avatar generation. Get one at https://platform.tripo3d.ai. Without it, the generate-avatar skill is disabled.",
+      "required": false
+    },
+    {
+      "name": "AUDIO_LLM_API_KEY",
+      "description": "API key for the audio-capable LLM used by the studio assistant (process-live-audio skill). Works with OpenAI or Google Gemini depending on AUDIO_LLM_PROVIDER.",
+      "required": false
+    },
+    {
+      "name": "AUDIO_LLM_PROVIDER",
+      "description": "Provider for audio analysis. Set to 'openai' (default) or 'google'. Paired with AUDIO_LLM_API_KEY.",
+      "required": false
+    },
+    {
+      "name": "CREATIVE_TV_WS_URL",
+      "description": "WebSocket endpoint for the Creative TV chat backend. Required (with CREATIVE_TV_AUTH_TOKEN) for Broadcast Mode and AFK Mode chat monitoring.",
+      "required": false
+    },
+    {
+      "name": "CREATIVE_TV_AUTH_TOKEN",
+      "description": "Authentication token for the Creative TV WebSocket. Paired with CREATIVE_TV_WS_URL.",
+      "required": false
+    },
+    {
+      "name": "LIVEPEER_API_KEY",
+      "description": "Livepeer Studio API key for the clip-livepeer-stream skill — autonomous highlight clipping and broadcast management.",
+      "required": false
+    },
+    {
+      "name": "SOCIAL_TOKEN_ADDRESS",
+      "description": "Creator's ERC-20 social token contract address on Base (0x...). Used by the distribute-social-token skill.",
+      "required": false
+    },
+    {
+      "name": "METOKEN_ADDRESS",
+      "description": "Creator's MeToken bonding-curve contract address on Base (0x...). Used by the mint-metoken skill; mints using DAI as reserve.",
+      "required": false
+    },
+    {
+      "name": "REALITY_ETH_ADDRESS",
+      "description": "reality.eth contract address on Base (0x...). Used by the create-reality-market skill for binary prediction markets.",
+      "required": false
+    }
+  ],
   "scripts": {
     "build": "bash setup.sh",
     "start": ""
