@@ -1,6 +1,8 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { useState } from 'react'
+import { useTheme } from 'next-themes'
 import {
   PenTool,
   Users,
@@ -21,6 +23,8 @@ import {
 import { toast } from 'sonner'
 import { useStore } from '@/lib/store'
 
+const MarkdownEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false })
+
 type RightTab = 'assets' | 'revenue' | 'deploy'
 
 const SPONSORS = [
@@ -29,6 +33,7 @@ const SPONSORS = [
 ] as const
 
 export default function Home() {
+  const { resolvedTheme } = useTheme()
   const {
     audience,
     tension,
@@ -252,13 +257,18 @@ Make a remark. Make a ruckus.
               <Download className="w-3 h-3 mr-1" /> Export .md
             </button>
           </div>
-          <div className="flex-1 p-6 min-h-0">
-            <textarea
-              className="w-full h-full min-h-[320px] text-base leading-relaxed text-slate-800 focus:outline-none resize-none font-serif placeholder:text-slate-300"
-              placeholder="Your remarkable idea begins here..."
-              value={markdownContent}
-              onChange={(e) => updateMarkdown(e.target.value)}
-            />
+          <div className="flex-1 p-6 min-h-0 flex flex-col">
+            <div
+              className="min-h-[320px] flex-1 flex flex-col [&_.w-md-editor]:min-h-[320px] [&_.w-md-editor]:flex-1"
+              data-color-mode={resolvedTheme === 'dark' ? 'dark' : 'light'}
+            >
+              <MarkdownEditor
+                value={markdownContent}
+                onChange={(v) => updateMarkdown(v ?? '')}
+                preview="live"
+                textareaProps={{ placeholder: 'Your remarkable idea begins here...' }}
+              />
+            </div>
           </div>
         </section>
 

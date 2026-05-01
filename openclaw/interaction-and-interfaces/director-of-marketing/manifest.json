@@ -87,7 +87,7 @@
 
   "scripts": {
     "build": "bash setup.sh",
-    "start": "bash -c 'cd web && if command -v pnpm >/dev/null 2>&1; then exec pnpm run dev; else exec npm run dev; fi'"
+    "start": "bash scripts/start-web.sh"
   },
   "skills": [
     {
