@@ -1,9 +1,10 @@
 # Director of Marketing
 
-A Pinata OpenClaw agent for **newsletter and marketing workflows**. It uses the [Paragraph CLI](https://paragraph.com) to manage posts, publications, subscribers, and coins on Paragraph, or **SMTP** to send email when you do not have a Paragraph account.
+A Pinata OpenClaw agent for **newsletter and marketing workflows**, framed as **people-driven storytelling**: word of mouth, clear promises, **consistency** over performative authenticity, and the **smallest viable audience** before volume. It uses the [Paragraph CLI](https://paragraph.com) for posts, publications, subscribers, and coins, or **SMTP** when you do not use Paragraph.
 
 ## What it does
 
+- **Strategy before tactics** — Anchors work in *who you help people become* and *what they hire you to do*; tracks permission, subscribers, and open rates that matter.
 - **Newsletter profile first** — Verifies Paragraph auth and summarizes your publication before drafting or publishing.
 - **Paragraph** — Create and manage drafts, posts, and related resources via `paragraph` with JSON output, dry-runs, and explicit approval before publish.
 - **Email fallback** — Send campaigns or one-off messages through your mail provider using the bundled Node + nodemailer helper (SMTP).
