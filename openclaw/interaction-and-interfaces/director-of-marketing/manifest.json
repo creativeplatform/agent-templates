@@ -13,8 +13,8 @@
     "slug": "director-of-marketing",
     "category": "interaction & interfaces",
     "tags": ["paragraph", "newsletter", "marketing", "publishing", "web3", "smtp"],
-    "authorName": "Pinata",
-    "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/director-of-marketing"
+    "authorName": "Creative Platform",
+    "authorUrl": "https://github.com/sirgawain0x/agent-templates/tree/main/openclaw/interaction-and-interfaces/director-of-marketing"
   },
 
   "secrets": [
@@ -87,10 +87,58 @@
 
   "scripts": {
     "build": "bash setup.sh",
-    "start": ""
+    "start": "bash scripts/start-web.sh"
   },
+  "skills": [
+    {
+      "cid": "bafybeieerrctaycitdctw57t4ov5welowxt3idxojpy6qnq23wlbyqgyou",
+      "name": "@Pinata/API"
+    },
+    {
+      "cid": "bafybeigfukjsrtuuuwbshp5nr5qme5ndvc7t7e54dixuzeobxyyaycwifu",
+      "name": "@Pinata/MEMORY_SALIENCE"
+    },
+    {
+      "cid": "bafybeiergfzuvxxlozrmtuh6vddst6pn7ffsjfl6khwaclyvlg6sokfjp4",
+      "name": "@Pinata/PARASPACE"
+    },
+    {
+      "cid": "bafybeiblmoh4eevvvenvhlxnteezliy2ltlo26bl7kavwzxvbm4d2ku7qy",
+      "name": "@pinata/platform"
+    },
+    {
+      "cid": "bafybeifav7f7oaaispwrim74jseeyc6hlwoz6wtnn4fhkepayfedg6qj64",
+      "name": "@pinata/sqlite-sync"
+    },
+    {
+      "clawhub_slug": "self-improving-agent",
+      "name": "self-improving-agent"
+    },
+    {
+      "clawhub_slug": "humanizer",
+      "name": "humanizer"
+    },
+    {
+      "clawhub_slug": "multi-search-engine",
+      "name": "multi-search-engine"
+    },
+    {
+      "clawhub_slug": "nano-banana-pro",
+      "name": "nano-banana-pro"
+    },
+    {
+      "clawhub_slug": "evolink-music",
+      "name": "evolink-music"
+    }
+  ],
 
   "tasks": [],
 
-  "routes": []
+  "routes": [
+    {
+      "port": 3000,
+      "path": "/newsletter",
+      "protected": false
+    }
+  ]
 }

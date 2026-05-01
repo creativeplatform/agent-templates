@@ -1,6 +1,6 @@
 # Director of Marketing
 
-A Pinata OpenClaw agent for **newsletter and marketing workflows**, framed as **people-driven storytelling**: word of mouth, clear promises, **consistency** over performative authenticity, and the **smallest viable audience** before volume. It uses the [Paragraph CLI](https://paragraph.com) for posts, publications, subscribers, and coins, or **SMTP** when you do not use Paragraph.
+An OpenClaw agent by **Creative Platform** for **newsletter and marketing workflows**, framed as **people-driven storytelling**: word of mouth, clear promises, **consistency** over performative authenticity, and the **smallest viable audience** before volume. It uses the [Paragraph CLI](https://paragraph.com) for posts, publications, subscribers, and coins, or **SMTP** when you do not use Paragraph.
 
 ## What it does
 
@@ -25,7 +25,7 @@ A Pinata OpenClaw agent for **newsletter and marketing workflows**, framed as **
 
 ## How it works
 
-1. Deploy the template on Pinata.
+1. Deploy the template on Creative Platform (or your OpenClaw host).
 2. Build runs `setup.sh`: installs `@paragraph-com/cli` globally and `npm install` in `workspace/tools/email-send`.
 3. The agent reads `workspace/skills/paragraph-cli.md` before using Paragraph commands.
 

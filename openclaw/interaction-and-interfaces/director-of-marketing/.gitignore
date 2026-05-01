@@ -4,3 +4,6 @@ workspace/memory/
 workspace/MEMORY.md
 node_modules/
 workspace/tools/email-send/node_modules/
+web/out/
+._*
+.DS_Store
