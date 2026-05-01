@@ -1,0 +1,96 @@
+{
+  "$schema": "https://agents.pinata.cloud/schemas/manifest.v1.json",
+  "version": 1,
+
+  "agent": {
+    "name": "Director of Marketing",
+    "description": "Plans and ships newsletter and marketing content. Uses the Paragraph CLI for posts, publications, subscribers, and coins on paragraph.com, or falls back to SMTP when you do not use Paragraph.",
+    "vibe": "strategic, clear, respects drafts and explicit approval before anything goes live",
+    "emoji": "📣"
+  },
+
+  "template": {
+    "slug": "director-of-marketing",
+    "category": "interaction & interfaces",
+    "tags": ["paragraph", "newsletter", "marketing", "publishing", "web3", "smtp"],
+    "authorName": "Pinata",
+    "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/director-of-marketing"
+  },
+
+  "secrets": [
+    {
+      "name": "PARAGRAPH_API_KEY",
+      "description": "Paragraph API key for non-interactive CLI auth (maps to PARAGRAPH_API_KEY). Get one from your Paragraph account. Optional if you only use the email fallback.",
+      "required": false
+    },
+    {
+      "name": "PARAGRAPH_API_URL",
+      "description": "Optional custom Paragraph API base URL.",
+      "required": false
+    },
+    {
+      "name": "SMTP_HOST",
+      "description": "SMTP server hostname for sending mail when not using Paragraph (e.g. smtp.gmail.com).",
+      "required": false
+    },
+    {
+      "name": "SMTP_PORT",
+      "description": "SMTP port (e.g. 587 for STARTTLS, 465 for TLS).",
+      "required": false
+    },
+    {
+      "name": "SMTP_USER",
+      "description": "SMTP username (often your full email address).",
+      "required": false
+    },
+    {
+      "name": "SMTP_PASS",
+      "description": "SMTP password or app-specific password.",
+      "required": false
+    },
+    {
+      "name": "SMTP_SECURE",
+      "description": "Set to \"1\" or \"true\" to use TLS on connect (typical for port 465). Omit or \"0\" for STARTTLS on port 587.",
+      "required": false
+    },
+    {
+      "name": "EMAIL_FROM",
+      "description": "From address for SMTP sends (e.g. \"Newsletter <you@domain.com>\").",
+      "required": false
+    },
+    {
+      "name": "EMAIL_REPLY_TO",
+      "description": "Optional Reply-To header for SMTP sends.",
+      "required": false
+    },
+    {
+      "name": "IMAP_HOST",
+      "description": "Optional IMAP host if you later read inbox/bounces (receiving mail; sending still uses SMTP).",
+      "required": false
+    },
+    {
+      "name": "IMAP_PORT",
+      "description": "Optional IMAP port (e.g. 993).",
+      "required": false
+    },
+    {
+      "name": "IMAP_USER",
+      "description": "Optional IMAP username.",
+      "required": false
+    },
+    {
+      "name": "IMAP_PASS",
+      "description": "Optional IMAP password.",
+      "required": false
+    }
+  ],
+
+  "scripts": {
+    "build": "bash setup.sh",
+    "start": ""
+  },
+
+  "tasks": [],
+
+  "routes": []
+}

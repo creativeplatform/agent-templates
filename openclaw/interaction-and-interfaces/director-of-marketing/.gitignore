@@ -1,0 +1,6 @@
+.env
+*.env
+workspace/memory/
+workspace/MEMORY.md
+node_modules/
+workspace/tools/email-send/node_modules/
