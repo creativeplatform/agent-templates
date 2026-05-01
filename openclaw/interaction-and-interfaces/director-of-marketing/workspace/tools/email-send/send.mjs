@@ -63,7 +63,7 @@ const secure =
 const from = process.env.EMAIL_FROM;
 const replyTo = process.env.EMAIL_REPLY_TO;
 
-if (!host || !port || !user || pass === undefined || !from) {
+if (!host || !port || !user || !pass || !from) {
   console.error(
     "send.mjs: set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, EMAIL_FROM"
   );
