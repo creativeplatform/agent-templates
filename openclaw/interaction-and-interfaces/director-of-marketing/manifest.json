@@ -87,10 +87,58 @@
 
   "scripts": {
     "build": "bash setup.sh",
-    "start": ""
+    "start": "bash -c 'cd web && if command -v pnpm >/dev/null 2>&1; then exec pnpm run dev; else exec npm run dev; fi'"
   },
+  "skills": [
+    {
+      "cid": "bafybeieerrctaycitdctw57t4ov5welowxt3idxojpy6qnq23wlbyqgyou",
+      "name": "@Pinata/API"
+    },
+    {
+      "cid": "bafybeigfukjsrtuuuwbshp5nr5qme5ndvc7t7e54dixuzeobxyyaycwifu",
+      "name": "@Pinata/MEMORY_SALIENCE"
+    },
+    {
+      "cid": "bafybeiergfzuvxxlozrmtuh6vddst6pn7ffsjfl6khwaclyvlg6sokfjp4",
+      "name": "@Pinata/PARASPACE"
+    },
+    {
+      "cid": "bafybeiblmoh4eevvvenvhlxnteezliy2ltlo26bl7kavwzxvbm4d2ku7qy",
+      "name": "@pinata/platform"
+    },
+    {
+      "cid": "bafybeifav7f7oaaispwrim74jseeyc6hlwoz6wtnn4fhkepayfedg6qj64",
+      "name": "@pinata/sqlite-sync"
+    },
+    {
+      "clawhub_slug": "self-improving-agent",
+      "name": "self-improving-agent"
+    },
+    {
+      "clawhub_slug": "humanizer",
+      "name": "humanizer"
+    },
+    {
+      "clawhub_slug": "multi-search-engine",
+      "name": "multi-search-engine"
+    },
+    {
+      "clawhub_slug": "nano-banana-pro",
+      "name": "nano-banana-pro"
+    },
+    {
+      "clawhub_slug": "evolink-music",
+      "name": "evolink-music"
+    }
+  ],
 
   "tasks": [],
 
-  "routes": []
+  "routes": [
+    {
+      "port": 3000,
+      "path": "/newsletter",
+      "protected": false
+    }
+  ]
 }

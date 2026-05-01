@@ -17,5 +17,15 @@ cd "$SCRIPT_DIR/workspace/tools/email-send"
 echo "Installing email-send dependencies..."
 npm install
 
+# ── Newsletter UI (Next.js, manifest route /newsletter) ─────────────────────
+cd "$SCRIPT_DIR/web"
+echo "Installing web UI dependencies..."
+if command -v pnpm &>/dev/null; then
+  pnpm install
+else
+  npm install
+fi
+
 echo ""
 echo "Setup complete. Open the chat to get started."
+echo "Run the UI: cd web && pnpm dev (or npm run dev) — served at http://localhost:3000/newsletter"
