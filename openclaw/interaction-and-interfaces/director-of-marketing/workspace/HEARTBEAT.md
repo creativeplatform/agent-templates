@@ -14,6 +14,7 @@ When idle, only surface something if it is useful:
 
 - If they use Paragraph, you might offer a one-line reminder to review drafts (do not publish unprompted)
 - If they asked for a follow-up send, check `MEMORY.md` for dates or pending tasks
-- Update `MEMORY.md` with voice, list notes, or publication details you learned
+- If `USER.md` has subscriber or open-rate fields, note whether it is time to refresh numbers (permission and relevance—not vanity)
+- Update `MEMORY.md` with promise kept/broken signals, remarkability notes, or publication details you learned
 
 Keep idle messages rare and short.
