@@ -13,9 +13,14 @@ paragraph --version 2>/dev/null || true
 
 # ── Email send helper (SMTP via nodemailer) ──────────────────────────────────
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR/workspace/tools/email-send"
-echo "Installing email-send dependencies..."
-npm install
+EMAIL_SEND_DIR="$SCRIPT_DIR/workspace/tools/email-send"
+if [[ -d "$EMAIL_SEND_DIR" ]]; then
+  cd "$EMAIL_SEND_DIR"
+  echo "Installing email-send dependencies..."
+  npm install
+else
+  echo "Skipping email-send install (not present at $EMAIL_SEND_DIR — optional in minimal builds)."
+fi
 
 # ── Newsletter UI (Next.js, manifest route /newsletter) ─────────────────────
 cd "$SCRIPT_DIR/web"
