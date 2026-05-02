@@ -11,6 +11,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      { source: '/newsletter', destination: '/', permanent: false },
+      { source: '/newsletter/:path*', destination: '/:path*', permanent: false },
+    ]
+  },
 }
 
 export default nextConfig
