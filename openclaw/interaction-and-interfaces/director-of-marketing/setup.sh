@@ -36,9 +36,9 @@ fi
 BUILD_STATUS=$?
 set -e
 if [[ $BUILD_STATUS -ne 0 ]]; then
-  echo "Warning: next build failed; agent start will use dev server until build succeeds." >&2
+  echo "Warning: next build failed; manifest start will fail until build succeeds (or use REMARKABILITY_DEV=1 for dev)." >&2
 fi
 
 echo ""
 echo "Setup complete. Open the chat to get started."
-echo "Run the UI locally: cd web && pnpm dev (or npm run dev) — http://localhost:3000/newsletter"
+echo "Run the UI: manifest start (requires .next + BUILD_ID) or cd web && REMARKABILITY_DEV=1 pnpm dev — http://localhost:3000/"
