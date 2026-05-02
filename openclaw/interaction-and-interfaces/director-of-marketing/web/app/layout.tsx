@@ -9,22 +9,10 @@ export const metadata: Metadata = {
   title: 'Remarkability Engine',
   description: 'Create remarkable newsletters with strategic inputs and AI assistance',
   generator: 'v0.app',
+  // Only reference files in web/public (missing PNGs caused 401 on favicon requests behind basePath).
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    apple: '/icon.svg',
   },
 }
 
