@@ -26,8 +26,15 @@ An OpenClaw agent by **Creative Platform** for **newsletter and marketing workfl
 ## How it works
 
 1. Deploy the template on Creative Platform (or your OpenClaw host).
-2. Build runs `setup.sh`: installs `@paragraph-com/cli` globally and `npm install` in `workspace/tools/email-send`.
-3. The agent reads `workspace/skills/paragraph-cli.md` before using Paragraph commands.
+2. Build runs `setup.sh`: installs `@paragraph-com/cli` globally, `npm install` in `workspace/tools/email-send`, installs `web/` deps, and runs **`next build`** (production CSS and `/_next` assets require this).
+3. **Start** runs `scripts/start-web.sh`, which serves the UI with **`node server.cjs`** (custom Node + `next` handler: **production** Next on `0.0.0.0`). For local dev instead, run from `web/`: `REMARKABILITY_DEV=1 pnpm dev`.
+4. The agent reads `workspace/skills/paragraph-cli.md` before using Paragraph commands.
+
+### Pinata routes vs Next.js paths
+
+Per [Pinata Domains & Routes](https://docs.pinata.cloud), the **path prefix is stripped** before traffic reaches your container (e.g. public `…/newsletter` → process sees `/`). This app therefore has **no `basePath`** in `next.config.mjs`. The manifest still declares `"path": "/newsletter"` so users open that URL on the agent; internally Next serves `/` and `/_next/static/...`.
+
+**If the UI loads unstyled:** run template **build** (so `next build` runs) then **start**, and confirm **`/_next/static/...css`** returns 200 in the browser network tab.
 
 ## Secrets
 

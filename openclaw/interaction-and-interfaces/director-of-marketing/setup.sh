@@ -22,10 +22,12 @@ cd "$SCRIPT_DIR/web"
 echo "Installing web UI dependencies..."
 if command -v pnpm &>/dev/null; then
   pnpm install
+  pnpm run build
 else
   npm install
+  npm run build
 fi
 
 echo ""
 echo "Setup complete. Open the chat to get started."
-echo "Run the UI: cd web && pnpm dev (or npm run dev) — served at http://localhost:3000/newsletter"
+echo "Run the UI: manifest start (production server) or cd web && REMARKABILITY_DEV=1 pnpm dev — http://localhost:3000/"
