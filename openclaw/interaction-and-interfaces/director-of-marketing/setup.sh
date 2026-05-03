@@ -41,7 +41,8 @@ fi
 BUILD_STATUS=$?
 set -e
 if [[ $BUILD_STATUS -ne 0 ]]; then
-  echo "Warning: next build failed; manifest start will fail until build succeeds (or use REMARKABILITY_DEV=1 for dev)." >&2
+  echo "Error: next build failed; Pinata start needs .next + BUILD_ID. Fix the web build, or run locally with REMARKABILITY_DEV=1." >&2
+  exit 1
 fi
 
 echo ""
