@@ -9,7 +9,18 @@
   "template": {
     "slug": "creative-ai-digital-twin-lite",
     "category": "interaction & interfaces",
-    "tags": ["digital-twin", "3d-avatar", "erc-8004", "base", "c2pa", "alignment", "studio-assistant", "youtube", "twitch", "live-stream"],
+    "tags": [
+      "digital-twin",
+      "3d-avatar",
+      "erc-8004",
+      "base",
+      "c2pa",
+      "alignment",
+      "studio-assistant",
+      "youtube",
+      "twitch",
+      "live-stream"
+    ],
     "authorName": "Creative Organization DAO",
     "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/creative-ai-digital-twin-lite",
     "authorLogoUrl": "https://teal-defeated-krill-982.mypinata.cloud/ipfs/bafybeicroemiw7wwvdc6qxkyfx52nfhbhxcbqjgxlr2fsnrn75pgoz2ocm"
@@ -72,30 +83,12 @@
     }
   ],
   "skills": [
-    {
-      "cid": "bafybeigum5juaj7faldszh7fpc6j2w23susjajvtzh6nh7vgi2eoiyvzf4",
-      "name": "@Pinata/ERC8004"
-    },
-    {
-      "cid": "bafybeieerrctaycitdctw57t4ov5welowxt3idxojpy6qnq23wlbyqgyou",
-      "name": "@Pinata/API"
-    },
-    {
-      "cid": "bafybeigfukjsrtuuuwbshp5nr5qme5ndvc7t7e54dixuzeobxyyaycwifu",
-      "name": "@Pinata/MEMORY_SALIENCE"
-    },
-    {
-      "cid": "bafybeiergfzuvxxlozrmtuh6vddst6pn7ffsjfl6khwaclyvlg6sokfjp4",
-      "name": "@Pinata/PARASPACE"
-    },
-    {
-      "cid": "bafybeicglyjdb6wrrcbfyu6i2fe4lpxdxgvfvlht7yzdim7cvwt656whue",
-      "name": "@pinata/platform"
-    },
-    {
-      "cid": "bafybeifav7f7oaaispwrim74jseeyc6hlwoz6wtnn4fhkepayfedg6qj64",
-      "name": "@pinata/sqlite-sync"
-    },
+    "@Pinata/ERC8004",
+    "@Pinata/API",
+    "@Pinata/MEMORY_SALIENCE",
+    "@Pinata/PARASPACE",
+    "@pinata/platform",
+    "@pinata/sqlite-sync",
     {
       "clawhub_slug": "self-improving-agent",
       "name": "self-improving-agent"
