@@ -94,30 +94,6 @@
   ],
   "skills": [
     {
-      "clawhub_slug": "@Pinata/ERC8004",
-      "name": "Pinata ERC-8004"
-    },
-    {
-      "clawhub_slug": "@Pinata/API",
-      "name": "Pinata API"
-    },
-    {
-      "clawhub_slug": "@Pinata/MEMORY_SALIENCE",
-      "name": "Pinata Memory Salience"
-    },
-    {
-      "clawhub_slug": "@Pinata/PARASPACE",
-      "name": "Pinata Paraspace"
-    },
-    {
-      "clawhub_slug": "@pinata/platform",
-      "name": "Pinata platform"
-    },
-    {
-      "clawhub_slug": "@pinata/sqlite-sync",
-      "name": "Pinata SQLite sync"
-    },
-    {
       "clawhub_slug": "self-improving-agent",
       "name": "self-improving-agent"
     }
