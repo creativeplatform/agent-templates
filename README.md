@@ -19,9 +19,10 @@ Templates are organized by **agent type** — the underlying runtime or framewor
 ### [OpenClaw](./openclaw)
 OpenClaw agents run in isolated containers with a persistent workspace. They can run code, search the web, manage files, and connect to external services.
 
----
+### [Hermes](./hermes)
+Hermes agents are procedural [Hermes Agent](https://hermes-agent.nousresearch.com/docs) skills (`SKILL.md`) rather than containerized OpenClaw workspaces. Each template includes a `manifest.json` with `"platform": "hermes"` so marketplace discovery routes them to the Hermes runtime.
 
-*More agent types coming soon.*
+---
 
 ## 📦 Template Categories
 Within each agent type, templates are grouped based on the *role the agent plays* in a system.

@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "agent": {
+    "name": "Creative AI Digital Twin Lite (Hermes)",
+    "description": "A Hermes Agent skill for creators. Builds alignment through prediction games, generates rigged 3D avatars via Tripo3D with C2PA provenance, registers on-chain coherence to Base via ERC-8004, and acts as a real-time studio assistant and live-chat moderator for YouTube and Twitch streams with Twitch-native clip creation.",
+    "vibe": "reflective, curious, creator-first, earns trust before acting",
+    "emoji": "🧩"
+  },
+  "template": {
+    "slug": "creative-ai-digital-twin-lite",
+    "platform": "hermes",
+    "category": "interaction & interfaces",
+    "tags": [
+      "hermes",
+      "digital-twin",
+      "3d-avatar",
+      "erc-8004",
+      "base",
+      "c2pa",
+      "alignment",
+      "studio-assistant",
+      "youtube",
+      "twitch"
+    ],
+    "authorName": "Creative Organization DAO",
+    "authorUrl": "https://github.com/sirgawain0x/agent-templates/tree/main/hermes/interaction-and-interfaces/creative-ai-digital-twin-lite",
+    "authorLogoUrl": "https://teal-defeated-krill-982.mypinata.cloud/ipfs/bafybeicroemiw7wwvdc6qxkyfx52nfhbhxcbqjgxlr2fsnrn75pgoz2ocm"
+  },
+  "secrets": [
+    {
+      "name": "TRIPO_API_KEY",
+      "description": "Tripo3D API key for text-to-3D avatar generation. Get one at https://platform.tripo3d.ai. Without it, avatar generation is disabled.",
+      "required": false
+    },
+    {
+      "name": "PRIVATE_KEY",
+      "description": "0x-prefixed Ethereum private key for the agent's dedicated wallet. Used for ERC-8004 on-chain alignment registration. Create a NEW wallet — never use your personal wallet — and fund it with only the minimum ETH needed for gas on Base.",
+      "required": false
+    },
+    {
+      "name": "PINATA_JWT",
+      "description": "Pinata API JWT token. Used for IPFS/file operations. Get one at app.pinata.cloud → Developers → API Keys → New Key (Admin permissions).",
+      "required": true
+    },
+    {
+      "name": "PINATA_GATEWAY_URL",
+      "description": "Pinata dedicated gateway domain (e.g. your-gateway.mypinata.cloud). Find it at app.pinata.cloud → Gateways.",
+      "required": true
+    },
+    {
+      "name": "AUDIO_LLM_API_KEY",
+      "description": "API key for the audio-capable LLM used in studio mode. Works with OpenAI GPT-4o or Google Gemini depending on AUDIO_LLM_PROVIDER.",
+      "required": false
+    },
+    {
+      "name": "AUDIO_LLM_PROVIDER",
+      "description": "Provider for audio analysis. Set to 'openai' (default) or 'google'. Paired with AUDIO_LLM_API_KEY.",
+      "required": false
+    },
+    {
+      "name": "YOUTUBE_API_KEY",
+      "description": "YouTube Data API v3 key. Required for YouTube live chat monitoring.",
+      "required": false
+    },
+    {
+      "name": "YOUTUBE_VIDEO_ID",
+      "description": "Optional default YouTube video id used for heartbeat (autonomous) chat monitoring. Can be overridden per-invocation.",
+      "required": false
+    },
+    {
+      "name": "TWITCH_CHANNEL",
+      "description": "Optional default Twitch channel name used for heartbeat (autonomous) chat monitoring. Anonymous read-only monitoring requires no token.",
+      "required": false
+    },
+    {
+      "name": "TWITCH_CLIENT_ID",
+      "description": "Twitch application client id. Required (paired with TWITCH_OAUTH_USER_TOKEN) for clip creation.",
+      "required": false
+    },
+    {
+      "name": "TWITCH_OAUTH_USER_TOKEN",
+      "description": "Twitch user OAuth token with the 'clips:edit' scope. Required (paired with TWITCH_CLIENT_ID) for clip creation — Twitch does not support anonymous clipping.",
+      "required": false
+    }
+  ],
+  "skills": [],
+  "scripts": {
+    "build": "",
+    "start": ""
+  },
+  "routes": []
+}
