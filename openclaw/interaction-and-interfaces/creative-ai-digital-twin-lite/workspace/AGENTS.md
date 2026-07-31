@@ -15,6 +15,8 @@ workspace/
   TRANSACTIONS.md   # On-chain transaction log (created on first tx)
   MEMORY.md         # Long-term memory (create when needed)
   memory/           # Daily logs (create when needed)
+  skills/
+    creative-pixels-mcp.md  # Creative Pixels MCP — read before video edit/render
 ```
 
 ## Workflow
@@ -22,6 +24,11 @@ workspace/
 1. **Build** runs automatically after each `git push` — installs npm dependencies (ethers, c2pa-node, ws)
 2. **Start** is a no-op — the agent operates via conversation, not a web server
 3. Skills are invoked via `node skills/<name>/index.js` with CLI arguments
+4. **Video editing** uses the Creative Pixels MCP — read `skills/creative-pixels-mcp.md` before any `pixels_*` tool call
+
+## Video editing (Creative Pixels MCP)
+
+Read `skills/creative-pixels-mcp.md` whenever the operator asks to create, edit, render, or analyze a Pixels video project. Follow the import → create/get → edit (`callerId` + `$ref`) → render workflow. Confirm before destructive `removeItems` or forced project updates.
 
 ## Skill Invocation
 

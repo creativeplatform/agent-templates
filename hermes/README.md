@@ -16,8 +16,8 @@ Each agent template has its own folder under `hermes/<category>/<template-name>/
 
 Templates:
 
-- `creative-ai-digital-twin/` — full-featured Creative AI digital twin for Creative TV / Livepeer ecosystems.
-- `creative-ai-digital-twin-lite/` — lighter digital twin focused on YouTube/Twitch creators.
+- `creative-ai-digital-twin/` — full-featured Creative AI digital twin for Creative TV / Livepeer ecosystems, plus Creative Pixels MCP video create/edit/render when connected.
+- `creative-ai-digital-twin-lite/` — lighter digital twin focused on YouTube/Twitch creators, plus the same Creative Pixels MCP video workflows.
 
 ## Loading a skill in Hermes
 

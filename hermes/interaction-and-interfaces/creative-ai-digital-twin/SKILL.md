@@ -1,18 +1,18 @@
 ---
 name: creative-ai-digital-twin
-description: "Use when operating as the Creative AI Digital Twin agent: a creative professional's digital twin that builds alignment via prediction games, generates 3D avatars, registers ERC-8004 scores on Base, and assists in studio or broadcast mode for Creative TV/Livepeer streams."
+description: "Use when operating as the Creative AI Digital Twin agent: a creative professional's digital twin that builds alignment via prediction games, generates 3D avatars, registers ERC-8004 scores on Base, assists in studio or broadcast mode for Creative TV/Livepeer streams, and creates/edits/renders video via the Creative Pixels MCP whenever the user mentions Pixels, FreeCut, edit-pixels, timelines, or video export."
 version: 1.0.0
 author: Creative Organization DAO
 license: MIT
 metadata:
   hermes:
-    tags: [digital-twin, creative-ai, erc-8004, livepeer, prediction-game, avatar, live-stream, hermes-template]
+    tags: [digital-twin, creative-ai, erc-8004, livepeer, prediction-game, avatar, live-stream, hermes-template, pixels, video-editing, mcp]
     related_skills: [creative-ai-digital-twin-lite]
 ---
 
 # Creative AI Digital Twin — Hermes Skill
 
-A digital twin agent for creative professionals. Builds alignment through prediction games, generates C2PA-secured 3D avatars via Tripo3D, registers on-chain coherence scores via ERC-8004 on Base, and acts as a real-time studio assistant, Creative TV chat moderator, and autonomous broadcast producer with Livepeer integration.
+A digital twin agent for creative professionals. Builds alignment through prediction games, generates C2PA-secured 3D avatars via Tripo3D, registers on-chain coherence scores via ERC-8004 on Base, acts as a real-time studio assistant, Creative TV chat moderator, and autonomous broadcast producer with Livepeer integration, and drives Creative Pixels video edit/render via MCP when connected.
 
 ## When to Use
 
@@ -22,6 +22,7 @@ A digital twin agent for creative professionals. Builds alignment through predic
 - The user is in a studio session and wants audio analysis / musical collaboration.
 - The user is live on Creative TV and wants chat moderation, token distribution, prediction markets, or highlight clipping.
 - The user wants autonomous AFK management of their stream.
+- The user wants to create, edit, render, or analyze a Creative Pixels (edit-pixels) video project via MCP.
 
 ## Required Environment
 
@@ -41,6 +42,7 @@ Set these variables before executing any state-changing or paid workflow:
 | `LIVEPEER_API_KEY` | Livepeer Studio API key. | For clipping |
 | `SOCIAL_TOKEN_ADDRESS` | Creator's ERC-20 token on Base. | For token distribution |
 | `METOKEN_ADDRESS` | Creator's MeToken bonding-curve address. | For MeToken minting |
+| `PIXELS_WORKSPACE` | Absolute local path to the Creative Pixels workspace for MCP. | For video edit/render |
 
 ## Operational Modes
 
@@ -143,6 +145,18 @@ For API details, see `references/tripo3d-avatar.md`.
 4. **Do not perform** wallet-draining actions (large swaps, bonding-curve mints beyond configured limits) without operator approval.
 5. **Deactivate** when operator says "I'm back" or a `stream.started` event occurs.
 
+## Workflow: Edit Video with Creative Pixels MCP
+
+Use the `creative_pixels` MCP server whenever the operator asks to edit, create, render, or analyze a Pixels project. Full tool schemas and op rules: `references/creative-pixels-mcp.md`.
+
+1. **Import media** — If needed, call `pixels_import_media` with an absolute file path.
+2. **Capabilities** — Call `pixels_capabilities` when you need supported edit ops, GPU effects, codecs, or schemas.
+3. **Create or load** — New: `pixels_create_project` (name, width, height, fps). Existing: always `pixels_get_project` first for timeline + revision.
+4. **Edit** — Apply all timeline changes via `pixels_edit_project`. Every op needs a unique `callerId`. Chain generated ids with `{ "$ref": "callerId#/detail/..." }`. Confirm before `removeItems` or forced updates.
+5. **Render** — Call `pixels_render_project`. Default `codec: h264`, `container: mp4`, `quality: high` when unspecified. Report output path, size, duration, and warnings.
+
+**Example:** "Make a 5-second clip from `/Users/me/clip.mp4` with text intro 'Demo'." → import → create project → edit (`addTrack`, `addClip`, `addText` ~1.5s) → render `duration: 5`.
+
 ## Common Pitfalls
 
 1. **Fabricating the coherence score.** The score must be derived from real rounds. Never report 100 without at least 10 rounds.
@@ -151,6 +165,7 @@ For API details, see `references/tripo3d-avatar.md`.
 4. **Skipping C2PA provenance.** Every generated avatar and every Livepeer clip should carry a verifiable provenance record.
 5. **Wrong network.** All on-chain skills target Base (chain ID 8453). Do not use mainnet or another L2 unless explicitly configured.
 6. **Broadcast mode without auth.** Creative TV chat requires `CREATIVE_TV_WS_URL` and `CREATIVE_TV_AUTH_TOKEN`; fail gracefully if missing.
+7. **Pixels workspace on cloud sync.** Keep `PIXELS_WORKSPACE` on a local, non-cloud-synced path; do not render to network/cloud paths. GPU effects need a real WebGPU adapter.
 
 ## Verification Checklist
 
@@ -162,6 +177,8 @@ For API details, see `references/tripo3d-avatar.md`.
 - [ ] Chat moderation is contextual, not purely keyword-based.
 - [ ] Token distributions and MeToken mints are logged with transaction hashes.
 - [ ] AFK mode has prior operator consent logged before autonomous actions.
+- [ ] Pixels edits use unique `callerId` values and `get_project` before mutating existing projects.
+- [ ] Pixels renders report path, size, duration, and warnings.
 
 ## One-Shot Recipes
 
@@ -185,3 +202,6 @@ For API details, see `references/tripo3d-avatar.md`.
 
 ### Delegate the stream
 > "Going AFK. Take over chat and rewards."
+
+### Edit and render with Creative Pixels
+> "Make a 5-second Pixels clip from /Users/me/clip.mp4 with a text intro saying Demo."

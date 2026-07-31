@@ -17,8 +17,11 @@
 | YouTube Chat Monitor | `skills/monitor-youtube-chat/index.js` | YouTube Data API v3 live chat polling, moderation, metrics |
 | Twitch Chat Monitor | `skills/monitor-twitch-chat/index.js` | Anonymous IRC-over-WebSocket chat reader, moderation, metrics |
 | Twitch Clip | `skills/create-twitch-clip/index.js` | Create a 30-second Helix clip from a live broadcast |
+| Creative Pixels MCP | `workspace/skills/creative-pixels-mcp.md` | Create/edit/render Pixels video projects via MCP (`creative_pixels`) |
 
 Local skills are invoked via `node skills/<name>/index.js` with CLI arguments. They read secrets from environment variables and print JSON results to stdout.
+
+Markdown MCP skills (under `workspace/skills/`) document tool workflows — read them before calling the matching MCP server.
 
 ### Attached Pinata Skills (via manifest `skills` array)
 
@@ -48,6 +51,7 @@ Attached skills are provided by Pinata and available as tools at runtime — no 
 | `TWITCH_CHANNEL` | Default Twitch channel for HEARTBEAT invocations | Twitch chat monitoring (optional) |
 | `TWITCH_CLIENT_ID` | Twitch application client id | Twitch clip creation |
 | `TWITCH_OAUTH_USER_TOKEN` | User OAuth token with `clips:edit` scope | Twitch clip creation |
+| `PIXELS_WORKSPACE` | Absolute path to the Creative Pixels workspace for MCP | Video edit/render via Creative Pixels MCP |
 
 Secrets are configured in the Pinata dashboard and injected as environment variables at runtime. Twitch chat monitoring requires no token — anonymous read-only access is supported.
 

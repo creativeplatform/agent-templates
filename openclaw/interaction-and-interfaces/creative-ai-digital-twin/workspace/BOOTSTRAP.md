@@ -116,6 +116,13 @@ If set: "reality.eth integration ready. I can create prediction markets around y
 
 If missing: "No reality.eth contract configured. Add `REALITY_ETH_ADDRESS` to enable prediction market creation."
 
+### PIXELS_WORKSPACE (for Creative Pixels video editing)
+Check: `echo $PIXELS_WORKSPACE`
+
+If set: "Creative Pixels workspace path is configured. Point the agent MCP config at `npm run headless:mcp` in your edit-pixels install and I can create, edit, and render video projects. Read `skills/creative-pixels-mcp.md` first."
+
+If missing: "No Pixels workspace configured yet. For conversational video editing, add `PIXELS_WORKSPACE` (absolute local path, not cloud-synced), run Creative Pixels MCP with `npm run headless:mcp -- --workspace <dir>`, and connect that MCP server to this agent."
+
 ## After You Know Who You Are
 
 Update these files with what you learned:

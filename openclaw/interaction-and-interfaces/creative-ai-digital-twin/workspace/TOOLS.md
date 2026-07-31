@@ -20,8 +20,11 @@
 | Reality.eth Market | `skills/create-reality-market/index.js` | Binary prediction market creation on Base |
 | Livepeer Clip | `skills/clip-livepeer-stream/index.js` | Clip live broadcast highlights + C2PA provenance |
 | Mint MeTokens | `skills/mint-metoken/index.js` | Mint personal tokens via bonding curve using DAI reserve |
+| Creative Pixels MCP | `workspace/skills/creative-pixels-mcp.md` | Create/edit/render Pixels video projects via MCP (`creative_pixels`) |
 
 Local skills are invoked via `node skills/<name>/index.js` with CLI arguments. They read secrets from environment variables and print JSON results to stdout.
+
+Markdown MCP skills (under `workspace/skills/`) document tool workflows — read them before calling the matching MCP server.
 
 ### Attached Pinata Skills (via manifest `skills` array)
 
@@ -51,6 +54,7 @@ Attached skills are provided by Pinata and available as tools at runtime — no 
 | `REALITY_ETH_ADDRESS` | reality.eth contract address on Base | Market creation |
 | `LIVEPEER_API_KEY` | Livepeer Studio API key | Stream clipping, multistream routing |
 | `METOKEN_ADDRESS` | Creator's MeToken bonding curve contract on Base | MeToken minting |
+| `PIXELS_WORKSPACE` | Absolute path to the Creative Pixels workspace for MCP | Video edit/render via Creative Pixels MCP |
 
 Secrets are configured in the Pinata dashboard and injected as environment variables at runtime.
 
