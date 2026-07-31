@@ -2,7 +2,7 @@
 
 ## What this is
 
-A digital twin agent for creative professionals. Deploy it and get an AI agent that learns your creative decision-making through prediction games, generates C2PA-secured 3D avatars via Tripo3D, registers your alignment score on-chain via ERC-8004 on Base, and acts as a real-time studio assistant, live stream moderator, and autonomous broadcast producer with Livepeer integration.
+A digital twin agent for creative professionals. Deploy it and get an AI agent that learns your creative decision-making through prediction games, generates C2PA-secured 3D avatars via Tripo3D, registers your alignment score on-chain via ERC-8004 on Base, acts as a real-time studio assistant, live stream moderator, and autonomous broadcast producer with Livepeer integration, and can create, edit, and render video via the [Creative Pixels](https://github.com/sirgawain0x/edit-pixels) MCP when connected.
 
 ## Capabilities
 
@@ -38,6 +38,9 @@ Autonomously clip broadcast highlights via the Livepeer API when engagement spik
 
 ### Live Stream Overlay (presence)
 Float the 3D avatar as a transparent overlay during live broadcasts. Works with OBS Studio via a Browser Source with the R3F canvas set to `alpha={true}`.
+
+### Creative Pixels Video Editing (MCP)
+When the Creative Pixels (`edit-pixels`) stdio MCP server is connected as `creative_pixels`, the agent can create projects, import media, edit timelines (clips, text, effects, trim/split), and render exports (default h264/mp4/high). See `workspace/skills/creative-pixels-mcp.md`. Point the agent at a local workspace via `PIXELS_WORKSPACE` and start MCP with `npm run headless:mcp -- --workspace <dir>`.
 
 ## Operational Modes
 
@@ -86,6 +89,9 @@ Float the 3D avatar as a transparent overlay during live broadcasts. Works with 
 **Go AFK**
 > "Going AFK — take over the stream. Keep the chat engaged and clip any highlights."
 
+**Edit and render with Creative Pixels**
+> "Make a 5-second Pixels clip from /Users/me/clip.mp4 with a text intro saying Demo."
+
 ## How it works
 
 1. Deploy the template on Pinata and open the chat
@@ -95,7 +101,8 @@ Float the 3D avatar as a transparent overlay during live broadcasts. Works with 
 5. Switch to Studio Mode for musical collaboration
 6. Switch to Broadcast Mode during live streams for chat management
 7. Enable AFK Mode for autonomous operation while you're away
-8. The agent compacts older rounds and transaction logs to stay efficient
+8. Optionally connect Creative Pixels MCP for conversational video create/edit/render
+9. The agent compacts older rounds and transaction logs to stay efficient
 
 ## Post-deploy setup
 
@@ -118,5 +125,6 @@ Configure these secrets in your Pinata dashboard for each feature:
 | `REALITY_ETH_ADDRESS` | reality.eth contract on Base | Prediction markets |
 | `LIVEPEER_API_KEY` | Livepeer Studio API key | Stream clipping, multistream |
 | `METOKEN_ADDRESS` | Creator's MeToken bonding curve contract | MeToken minting |
+| `PIXELS_WORKSPACE` | Absolute local path to Creative Pixels workspace | Video edit/render via MCP |
 
 The prediction game works with zero secrets configured — you can start building alignment immediately.

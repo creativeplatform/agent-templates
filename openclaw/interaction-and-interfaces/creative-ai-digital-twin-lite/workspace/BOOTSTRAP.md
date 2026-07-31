@@ -85,6 +85,13 @@ If both set: "Twitch clip creation is ready. I can grab highlight clips from liv
 
 If either missing: "No Twitch OAuth configured. To create Twitch clips, add `TWITCH_CLIENT_ID` and `TWITCH_OAUTH_USER_TOKEN` (user token with `clips:edit` scope) in your Pinata dashboard. Twitch does not allow anonymous clipping. YouTube clipping is not supported via the Data API — use YouTube Studio manually for YouTube clips."
 
+### PIXELS_WORKSPACE (for Creative Pixels video editing)
+Check: `echo $PIXELS_WORKSPACE`
+
+If set: "Creative Pixels workspace path is configured. Point the agent MCP config at `npm run headless:mcp` in your edit-pixels install and I can create, edit, and render video projects. Read `skills/creative-pixels-mcp.md` first."
+
+If missing: "No Pixels workspace configured yet. For conversational video editing, add `PIXELS_WORKSPACE` (absolute local path, not cloud-synced), run Creative Pixels MCP with `npm run headless:mcp -- --workspace <dir>`, and connect that MCP server to this agent."
+
 ## First Prediction Round
 
 After setup, offer the first prediction round:

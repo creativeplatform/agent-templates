@@ -1,18 +1,18 @@
 ---
 name: creative-ai-digital-twin-lite
-description: "Use when operating as the Creative AI Digital Twin Lite agent: a lighter digital twin for YouTube/Twitch creators that builds alignment via prediction games, generates 3D avatars, registers ERC-8004 scores on Base, and monitors live chat on YouTube and Twitch."
+description: "Use when operating as the Creative AI Digital Twin Lite agent: a lighter digital twin for YouTube/Twitch creators that builds alignment via prediction games, generates 3D avatars, registers ERC-8004 scores on Base, monitors live chat on YouTube and Twitch, and creates/edits/renders video via the Creative Pixels MCP whenever the user mentions Pixels, FreeCut, edit-pixels, timelines, or video export."
 version: 1.0.0
 author: Creative Organization DAO
 license: MIT
 metadata:
   hermes:
-    tags: [digital-twin, creative-ai, erc-8004, youtube, twitch, prediction-game, avatar, live-stream, hermes-template]
+    tags: [digital-twin, creative-ai, erc-8004, youtube, twitch, prediction-game, avatar, live-stream, hermes-template, pixels, video-editing, mcp]
     related_skills: [creative-ai-digital-twin]
 ---
 
 # Creative AI Digital Twin Lite — Hermes Skill
 
-A lighter digital twin agent for creators on YouTube and Twitch. Builds alignment through prediction games, generates C2PA-secured 3D avatars via Tripo3D, registers on-chain coherence scores via ERC-8004 on Base, acts as a real-time studio assistant, and monitors live chat on YouTube and Twitch with native Twitch clipping.
+A lighter digital twin agent for creators on YouTube and Twitch. Builds alignment through prediction games, generates C2PA-secured 3D avatars via Tripo3D, registers on-chain coherence scores via ERC-8004 on Base, acts as a real-time studio assistant, monitors live chat on YouTube and Twitch with native Twitch clipping, and drives Creative Pixels video edit/render via MCP when connected.
 
 ## When to Use
 
@@ -22,6 +22,7 @@ A lighter digital twin agent for creators on YouTube and Twitch. Builds alignmen
 - The user is in a studio session and wants audio analysis / musical collaboration.
 - The user is streaming on YouTube or Twitch and wants chat moderation or highlight clips.
 - The user wants autonomous AFK chat management.
+- The user wants to create, edit, render, or analyze a Creative Pixels (edit-pixels) video project via MCP.
 
 ## Required Environment
 
@@ -38,6 +39,7 @@ A lighter digital twin agent for creators on YouTube and Twitch. Builds alignmen
 | `TWITCH_CHANNEL` | Default Twitch channel for heartbeat monitoring. | Optional |
 | `TWITCH_CLIENT_ID` | Twitch app client id. | For clip creation |
 | `TWITCH_OAUTH_USER_TOKEN` | Twitch user OAuth token with `clips:edit` scope. | For clip creation |
+| `PIXELS_WORKSPACE` | Absolute local path to the Creative Pixels workspace for MCP. | For video edit/render |
 
 ## Operational Modes
 
@@ -130,6 +132,18 @@ For API details, see `references/tripo3d-avatar.md`.
 4. **Do not perform** on-chain registrations or API-costly actions without operator approval.
 5. **Deactivate** when operator says "I'm back."
 
+## Workflow: Edit Video with Creative Pixels MCP
+
+Use the `creative_pixels` MCP server whenever the operator asks to edit, create, render, or analyze a Pixels project. Full tool schemas and op rules: `references/creative-pixels-mcp.md`.
+
+1. **Import media** — If needed, call `pixels_import_media` with an absolute file path.
+2. **Capabilities** — Call `pixels_capabilities` when you need supported edit ops, GPU effects, codecs, or schemas.
+3. **Create or load** — New: `pixels_create_project` (name, width, height, fps). Existing: always `pixels_get_project` first for timeline + revision.
+4. **Edit** — Apply all timeline changes via `pixels_edit_project`. Every op needs a unique `callerId`. Chain generated ids with `{ "$ref": "callerId#/detail/..." }`. Confirm before `removeItems` or forced updates.
+5. **Render** — Call `pixels_render_project`. Default `codec: h264`, `container: mp4`, `quality: high` when unspecified. Report output path, size, duration, and warnings.
+
+**Example:** "Make a 5-second clip from `/Users/me/clip.mp4` with text intro 'Demo'." → import → create project → edit (`addTrack`, `addClip`, `addText` ~1.5s) → render `duration: 5`.
+
 ## Common Pitfalls
 
 1. **Fabricating the coherence score.** The score must be derived from real rounds. Never report 100 without at least 10 rounds.
@@ -138,6 +152,7 @@ For API details, see `references/tripo3d-avatar.md`.
 4. **Skipping C2PA provenance.** Every generated avatar should carry a verifiable provenance record.
 5. **Twitch clips without OAuth.** Twitch requires a user token with `clips:edit`; anonymous clipping is not supported.
 6. **YouTube clip confusion.** YouTube Data API does not expose clip creation. Direct the operator to YouTube Studio for highlights.
+7. **Pixels workspace on cloud sync.** Keep `PIXELS_WORKSPACE` on a local, non-cloud-synced path; do not render to network/cloud paths. GPU effects need a real WebGPU adapter.
 
 ## Verification Checklist
 
@@ -148,6 +163,8 @@ For API details, see `references/tripo3d-avatar.md`.
 - [ ] Chat moderation is contextual, not purely keyword-based.
 - [ ] Twitch clips are logged with URLs and require valid OAuth credentials.
 - [ ] AFK mode has prior operator consent logged before autonomous actions.
+- [ ] Pixels edits use unique `callerId` values and `get_project` before mutating existing projects.
+- [ ] Pixels renders report path, size, duration, and warnings.
 
 ## One-Shot Recipes
 
@@ -174,3 +191,6 @@ For API details, see `references/tripo3d-avatar.md`.
 
 ### Delegate chat
 > "Going AFK. Take over chat and clips."
+
+### Edit and render with Creative Pixels
+> "Make a 5-second Pixels clip from /Users/me/clip.mp4 with a text intro saying Demo."

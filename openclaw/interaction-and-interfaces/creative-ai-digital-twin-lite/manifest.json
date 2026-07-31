@@ -2,7 +2,7 @@
   "version": 1,
   "agent": {
     "name": "Creative AI Digital Twin Lite",
-    "description": "A generic digital-twin agent for creators. Builds alignment through prediction games, generates rigged 3D avatars via Tripo3D with C2PA provenance, registers on-chain coherence to Base via ERC-8004, and acts as a real-time studio assistant and live-chat moderator for YouTube and Twitch streams with Twitch-native clip creation.",
+    "description": "A generic digital-twin agent for creators. Builds alignment through prediction games, generates rigged 3D avatars via Tripo3D with C2PA provenance, registers on-chain coherence to Base via ERC-8004, and acts as a real-time studio assistant and live-chat moderator for YouTube and Twitch streams with Twitch-native clip creation. Can also create, edit, and render video via the Creative Pixels MCP when connected.",
     "vibe": "reflective, curious, creator-first, earns trust before acting",
     "emoji": "\ud83e\ude9e"
   },
@@ -19,7 +19,10 @@
       "studio-assistant",
       "youtube",
       "twitch",
-      "live-stream"
+      "live-stream",
+      "pixels",
+      "video-editing",
+      "mcp"
     ],
     "authorName": "Creative Organization DAO",
     "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/creative-ai-digital-twin-lite",
@@ -33,17 +36,17 @@
     },
     {
       "name": "PRIVATE_KEY",
-      "description": "0x-prefixed Ethereum private key for the agent's dedicated wallet. Used by @Pinata/ERC8004 for on-chain alignment registration. Create a NEW wallet — never use your personal wallet — and fund it with only the minimum ETH needed for gas on Base.",
+      "description": "0x-prefixed Ethereum private key for the agent's dedicated wallet. Used by @Pinata/ERC8004 for on-chain alignment registration. Create a NEW wallet \u2014 never use your personal wallet \u2014 and fund it with only the minimum ETH needed for gas on Base.",
       "required": false
     },
     {
       "name": "PINATA_JWT",
-      "description": "Pinata API JWT token. Used by attached Pinata skills. Get one at app.pinata.cloud → Developers → API Keys → New Key (Admin permissions).",
+      "description": "Pinata API JWT token. Used by attached Pinata skills. Get one at app.pinata.cloud \u2192 Developers \u2192 API Keys \u2192 New Key (Admin permissions).",
       "required": true
     },
     {
       "name": "PINATA_GATEWAY_URL",
-      "description": "Pinata dedicated gateway domain (e.g. your-gateway.mypinata.cloud). Find it at app.pinata.cloud → Gateways.",
+      "description": "Pinata dedicated gateway domain (e.g. your-gateway.mypinata.cloud). Find it at app.pinata.cloud \u2192 Gateways.",
       "required": true
     },
     {
@@ -78,7 +81,12 @@
     },
     {
       "name": "TWITCH_OAUTH_USER_TOKEN",
-      "description": "Twitch user OAuth token with the 'clips:edit' scope. Required (paired with TWITCH_CLIENT_ID) for clip creation — Twitch does not support anonymous clipping.",
+      "description": "Twitch user OAuth token with the 'clips:edit' scope. Required (paired with TWITCH_CLIENT_ID) for clip creation \u2014 Twitch does not support anonymous clipping.",
+      "required": false
+    },
+    {
+      "name": "PIXELS_WORKSPACE",
+      "description": "Absolute path to a local Creative Pixels workspace directory used by the Creative Pixels MCP server (`npm run headless:mcp -- --workspace <dir>`). Must be local and non-cloud-synced. Optional until you want conversational video edit/render.",
       "required": false
     }
   ],
