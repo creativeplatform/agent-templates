@@ -1,6 +1,7 @@
-# creative ai digital twin
+# Creative AI Digital Twin (OpenClaw / Pinata)
 
-## What this is
+**Platform:** OpenClaw container template for Pinata deployment  
+**Hermes skill equivalent:** [`hermes/interaction-and-interfaces/creative-ai-digital-twin`](../hermes/interaction-and-interfaces/creative-ai-digital-twin)
 
 A digital twin agent for creative professionals. Deploy it and get an AI agent that learns your creative decision-making through prediction games, generates C2PA-secured 3D avatars via Tripo3D, registers your alignment score on-chain via ERC-8004 on Base, acts as a real-time studio assistant, live stream moderator, and autonomous broadcast producer with Livepeer integration, and can create, edit, and render video via the [Creative Pixels](https://github.com/sirgawain0x/edit-pixels) MCP when connected.
 
@@ -127,4 +128,6 @@ Configure these secrets in your Pinata dashboard for each feature:
 | `METOKEN_ADDRESS` | Creator's MeToken bonding curve contract | MeToken minting |
 | `PIXELS_WORKSPACE` | Absolute local path to Creative Pixels workspace | Video edit/render via MCP |
 
-The prediction game works with zero secrets configured — you can start building alignment immediately.
+## Relationship to Hermes
+
+This directory is the deployable OpenClaw / Pinata container template. The [`hermes/...`](../hermes/interaction-and-interfaces/creative-ai-digital-twin) directory contains the same agent as a Hermes skill (procedural instructions for the Hermes Agent runtime). Both share the same capabilities, environment variables, and operational modes; pick the runtime that fits your setup.

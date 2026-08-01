@@ -1,5 +1,8 @@
 # Creative AI Digital Twin Lite (Hermes)
 
+**Platform:** Hermes Agent skill  
+**Pinata / OpenClaw deployable template:** [`openclaw/interaction-and-interfaces/creative-ai-digital-twin-lite`](../openclaw/interaction-and-interfaces/creative-ai-digital-twin-lite)
+
 A lighter Hermes Agent skill for creators on YouTube and Twitch.
 
 ## What it does
@@ -29,3 +32,7 @@ cp -r hermes/interaction-and-interfaces/creative-ai-digital-twin-lite ~/.hermes/
 
 2. Set the required environment variables (see `SKILL.md` Required Environment).
 3. In Hermes, prompt: `Load the creative-ai-digital-twin-lite skill and run an alignment round.`
+
+## Relationship to OpenClaw
+
+This directory is the Hermes skill packaging of the same Creative AI Digital Twin Lite agent. The [`openclaw/...`](../openclaw/interaction-and-interfaces/creative-ai-digital-twin-lite) directory contains the deployable Pinata/OpenClaw container template with runnable `skills/*.js` files. Both share the same capabilities, environment variables, and operational modes; pick the runtime that fits your setup.

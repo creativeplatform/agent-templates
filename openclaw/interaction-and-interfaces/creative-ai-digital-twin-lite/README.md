@@ -1,6 +1,7 @@
-# creative ai digital twin lite
+# Creative AI Digital Twin Lite (OpenClaw / Pinata)
 
-## What this is
+**Platform:** OpenClaw container template for Pinata deployment  
+**Hermes skill equivalent:** [`hermes/interaction-and-interfaces/creative-ai-digital-twin-lite`](../hermes/interaction-and-interfaces/creative-ai-digital-twin-lite)
 
 A generic digital twin agent for creators. Deploy it and get an AI agent that learns your creative decision-making through prediction games, generates C2PA-secured 3D avatars via Tripo3D, registers your alignment score on-chain via ERC-8004 on Base, acts as a real-time studio assistant and live-chat moderator for YouTube and Twitch streams, and can create, edit, and render video via the [Creative Pixels](https://github.com/sirgawain0x/edit-pixels) MCP when connected.
 
@@ -113,5 +114,9 @@ Configure these secrets in your Pinata dashboard for each feature:
 | `TWITCH_CLIENT_ID` | Twitch application client id | Twitch clip creation |
 | `TWITCH_OAUTH_USER_TOKEN` | User token with `clips:edit` scope | Twitch clip creation |
 | `PIXELS_WORKSPACE` | Absolute local path to Creative Pixels workspace | Video edit/render via MCP |
+
+## Relationship to Hermes
+
+This directory is the deployable OpenClaw / Pinata container template. The [`hermes/...`](../hermes/interaction-and-interfaces/creative-ai-digital-twin-lite) directory contains the same agent as a Hermes skill (procedural instructions for the Hermes Agent runtime). Both share the same capabilities, environment variables, and operational modes; pick the runtime that fits your setup.
 
 The prediction game works with zero secrets configured — you can start building alignment immediately. Anonymous Twitch chat monitoring also needs no token.
