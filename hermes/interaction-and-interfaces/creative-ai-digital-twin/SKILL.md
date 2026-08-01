@@ -6,7 +6,7 @@ author: Creative Organization DAO
 license: MIT
 metadata:
   hermes:
-    tags: [digital-twin, creative-ai, erc-8004, livepeer, prediction-game, avatar, live-stream, hermes-template, pixels, video-editing, mcp]
+    tags: [hermes, digital-twin, 3d-avatar, erc-8004, base, c2pa, alignment, studio-assistant, creative-tv, livepeer]
     related_skills: [creative-ai-digital-twin-lite]
 ---
 
