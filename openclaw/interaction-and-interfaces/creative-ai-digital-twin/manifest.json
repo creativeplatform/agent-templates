@@ -19,10 +19,7 @@
       "studio-assistant",
       "creative-tv",
       "livepeer",
-      "live-stream",
-      "pixels",
-      "video-editing",
-      "mcp"
+      "live-stream"
     ],
     "authorName": "Creative Organization DAO",
     "authorUrl": "https://github.com/PinataCloud/agent-templates/tree/main/openclaw/interaction-and-interfaces/creative-ai-digital-twin",
